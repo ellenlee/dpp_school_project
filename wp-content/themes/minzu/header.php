@@ -46,49 +46,29 @@
 	<body <?php body_class( $class ); ?>>
 		<div class="width100">
 			<header id="header" class="width100 clearfix">
-				<div class="navbar width100pad clearfix">
-					<div class="widthfull mar0auto">
-						<?php
-						$main_menu_header_top = array(
-							'theme_location' => 'main-nav-header-top',
-							'container' => 'nav',
-							'container_class' => 'alignleft widecol',
-							'container_id' => 'header-main-nav',
-							'menu_id' => 'main-nav-header-top',
-							'depth' => 1,
-							'walker' => new main_nav_header_top_walker
-						);
-						?><!-- This walker was added to the theme and is not covered in the book. For more info on this go to http://wdgwp.com/walker_class -->
+				<!-- LOGO 與 主選單 -->
+				<div class="navbar width100pad clearfix" style="border: 1px solid red;">
+					<a href="/"><img src="http://placehold.it/150x80"></a>
 
+					<?php
+					$main_menu_header_top = array(
+						'theme_location' => 'main-nav-header-top',
+						'container' => 'nav',
+						'container_class' => 'alignleft widecol',
+						'container_id' => 'header-main-nav',
+						'menu_id' => 'main-nav-header-top',
+						'depth' => 1,
+						'walker' => new main_nav_header_top_walker
+					);
+					?><!-- This walker was added to the theme and is not covered in the book. For more info on this go to http://wdgwp.com/walker_class -->
+
+					<nav class="social">
 						<?php wp_nav_menu( $main_menu_header_top ); ?>
-						<div class="narcolrt alignright">
-							<nav class="alignright social">
-							<ul>
-								<li class="alignleft nobull"><a href="http://twitter.com/professor" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/images/social/twitter-lg.png" alt="Twitter Icon" title="<?php bloginfo( 'title' ); ?> on Twitter"></a></li>
-								<li class="alignleft nobull"><a href="https://www.facebook.com/wordpressandweb" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/images/social/facebook-lg.png" alt="Facebook Icon" title="<?php bloginfo( 'title' ); ?> on Facebook"></a></li>
-								<li class="alignleft nobull"><a href="<?php bloginfo( 'rss2_url' ); ?>" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/images/social/rss-lg.png" alt="<?php bloginfo( 'title' ); ?> RSS Icon" title="Subscribe to <?php bloginfo( 'title' ); ?>"></a></li>
+					</nav><!-- .social -->
+				</div>
+			</header>
 
-				</ul>
-						</nav><!-- .social -->
-							<form class="alignright">
-							<input id="s" name="s" type="text" value="search" class="osc italic txttranup">
-							<input id="submit" name="submit" type="submit" value="" class="alignleft">
-						</form><!-- form (search box) -->
-						</div>
-					</div><!-- .widthfull -->
-				</div><!-- .navbar -->
-				<div class="width100pad clear widthfull mar0auto">
-					<div class="halfcol alignleft">
-						<h1 class="displaynone"><?php bloginfo( 'title' ); ?></h1>
-						<a href="<?php bloginfo( 'url' ); ?>" title="<?php bloginfo( 'title' ); ?> Home"><img src="<?php echo $j2theme_options['logo_url']; ?>" alt="<?php bloginfo( 'title' ); ?>" class="logo" /></a>
-					</div><!-- .halfcol -->
 
-					<div class="widget halfcolrt alignright">
-						<?php get_sidebar( 'header' ); ?>
-					</div><!-- widget -->
-				</div><!-- width100pad -->
-
-			</header><!-- header -->
 			<nav class="clearfix subnav">
 				<?php
 				$sub_menu_header_bottom = array(
@@ -104,6 +84,6 @@
 				?><!-- This walker was added to the theme and is not covered in the book. For more info on this go to http://wdgwp.com/walker_class -->
 
 				<?php wp_nav_menu( $sub_menu_header_bottom ); ?>
-						</nav>
+			</nav>
 			<div id="container" class="width100pad clearfix">
 				<div class="widthfull mar0auto">
