@@ -92,7 +92,7 @@ function generate_navigation_position()
 			<?php
 			wp_nav_menu(
 				array(
-					'theme_location' => 'primary',
+					'theme_location' => 'sub-menu',
 					'container' => 'div',
 					'container_class' => 'main-nav',
 					'container_id' => 'primary-menu',
