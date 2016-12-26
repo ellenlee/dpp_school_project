@@ -35,8 +35,6 @@
 			)
 		);
 
-
-
 		/**
 		 * Custom walker to put correct classes on <li>'s for main nav header top nav
 		 */
@@ -184,11 +182,6 @@
 		add_image_size( 'sm-post-thumb', 65, 50, true );
 		add_image_size( 'page-featured-image', 530, 95, true );
 		add_image_size( 'fullwidth-featured-image', 820, 95, true );
-
-
-
-
-
 
 
 		/********************************************//**
@@ -361,10 +354,33 @@ function grasstw_youtube_vid( $atts ){
 
 add_shortcode('youtube', 'grasstw_youtube_vid');
 
+
+// 同时删除head和feed中的WP版本号
+function ludou_remove_wp_version() {
+  return ”;
+}
+add_filter(‘the_generator’, ‘ludou_remove_wp_version’);
+
+// 隐藏js/css附加的WP版本号
+function ludou_remove_wp_version_strings( $src ) {
+  global $wp_version;
+  parse_str(parse_url($src, PHP_URL_QUERY), $query);
+  if ( !empty($query[‘ver’]) && $query[‘ver’] === $wp_version ) {
+    // 用WP版本号 + 12.8来替代js/css附加的版本号
+    // 既隐藏了WordPress版本号，也不会影响缓存
+    // 建议把下面的 12.8 替换成其他数字，以免被别人猜出
+    $src = str_replace($wp_version, $wp_version + 12.8, $src);
+  }
+  return $src;
+}
+add_filter( ‘script_loader_src’, ‘ludou_remove_wp_version_strings’ );
+add_filter( ‘style_loader_src’, ‘ludou_remove_wp_version_strings’ );
+
+
 // 解決WordPress樣式修改後沒反應的問題
 
-add_action( 'wp_enqueue_scripts', 'enqueue_child_theme_styles', PHP_INT_MAX);
-function enqueue_child_theme_styles() {
-    wp_enqueue_style( 'parent-style', get_template_directory_uri().'/style.css' );
-    wp_enqueue_style( 'child-style', get_stylesheet_uri(), NULL, filemtime( get_stylesheet_directory() . '/style.css' ) );
+add_action( 'wp_enqueue_scripts', 'add_styles');
+function add_styles() {
+     $css_file = get_stylesheet_directory() . '/style.css';
+     wp_enqueue_style( 'css-file', get_stylesheet_directory_uri().'/style.css', NULL, filemtime($css_file) );
 }
