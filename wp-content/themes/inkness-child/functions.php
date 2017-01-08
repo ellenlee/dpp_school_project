@@ -26,6 +26,7 @@ function inkness_setup() {
 
 	register_nav_menus( array(
 		'primary' => __( 'Primary Menu', 'inkness' ),
+		'sub-nav-header' => __( 'Sub Menu', 'grass_tw' ),
 	) );
 
 	add_theme_support( 'custom-background', apply_filters( 'inkness_custom_background_args', array(
@@ -38,7 +39,7 @@ function inkness_setup() {
 	 global $content_width;
 	 if ( ! isset( $content_width ) )
 		$content_width = 640; /* pixels */
-		
+
 	add_editor_style();
 }
 endif; // inkness_setup
@@ -90,14 +91,14 @@ jQuery(document).ready(function() {
 	jQuery('#example_showhidden').click(function() {
   		jQuery('#section-example_text_hidden').fadeToggle(400);
 	});
-	
+
 	if (jQuery('#example_showhidden:checked').val() !== undefined) {
 		jQuery('#section-example_text_hidden').show();
 	}
-	
+
 });
 </script>
- 
+
 <?php
 }
 
@@ -110,32 +111,32 @@ function inkness_scripts() {
 		}
 		else {
 			wp_enqueue_style( 'inkness-layout', get_template_directory_uri()."/css/layouts/sidebar-content.css" );
-		}	
+		}
 	}
 	else {
 		wp_enqueue_style( 'inkness-layout', get_template_directory_uri()."/css/layouts/content-sidebar.css" );
 	}
-			
+
 	wp_enqueue_style( 'inkness-bootstrap-style', get_template_directory_uri()."/css/bootstrap/bootstrap.min.css", array('inkness-layout') );
-		
+
 	wp_enqueue_style( 'inkness-main-style', get_template_directory_uri()."/css/skins/main.css", array('inkness-layout','inkness-bootstrap-style') );
-	
+
 	wp_enqueue_script( 'inkness-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 
 	wp_enqueue_script( 'inkness-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 	if ( (function_exists( 'of_get_option' )) && (of_get_option('slider_enabled') != 0) ) {
 		wp_enqueue_style( 'inkness-nivo-slider-default-theme', get_template_directory_uri()."/css/nivo/slider/themes/default/default.css" );
-	
+
 		wp_enqueue_style( 'inkness-nivo-slider-style', get_template_directory_uri()."/css/nivo/slider/nivo.css" );
-	}	
-	
+	}
+
 	if ( (function_exists( 'of_get_option' )) && (of_get_option('slider_enabled') != 0) ) {
 		wp_enqueue_script( 'inkness-nivo-slider', get_template_directory_uri() . '/js/nivo.slider.js', array('jquery') );
 	}
-	wp_enqueue_script( 'inkness-superfish', get_template_directory_uri() . '/js/superfish.js', array('jquery','hoverIntent') );	
-	
-	wp_enqueue_script( 'inkness-bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery') );	
-	
+	wp_enqueue_script( 'inkness-superfish', get_template_directory_uri() . '/js/superfish.js', array('jquery','hoverIntent') );
+
+	wp_enqueue_script( 'inkness-bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery') );
+
 	wp_enqueue_script( 'inkness-custom-js', get_template_directory_uri() . '/js/custom.js', array('jquery') );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -154,7 +155,7 @@ function inkness_custom_head_codes() {
  if ( (function_exists( 'of_get_option' )) && (of_get_option('slider_enabled') != 0) ) {
 	echo "<script>jQuery(window).load(function() { jQuery('#slider').nivoSlider({effect:'fade', pauseTime: 4500}); });</script>";
  }
-}	
+}
 add_action('wp_head', 'inkness_custom_head_codes');
 
 function inkness_nav_menu_args( $args = '' )

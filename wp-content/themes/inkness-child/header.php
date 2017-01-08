@@ -73,7 +73,7 @@
 							<a href="#content" title="<?php esc_attr_e( 'Skip to content', 'inkness' ); ?>"><?php _e( 'Skip to content', 'inkness' ); ?></a>
 						</div>
 
-						<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+						<?php wp_nav_menu( array( 'theme_location' => 'sub-nav-header' ) ); ?>
           </div>
 				</nav><!-- #site-navigation -->
 		  </div>
