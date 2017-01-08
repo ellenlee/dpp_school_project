@@ -18,3 +18,26 @@ Inkness WordPress Theme is distributed under the terms of the GNU GPL v3.
 
 
 @import url('../inkness/style.css');
+
+/* single-grass_course 裡的教師資料 */
+
+#grass_teacher {
+  border: 1px solid #ccc;
+  padding: 30px;
+}
+
+.teacher-avatar {
+  max-width: 250px;
+  max-height: 250px;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*.teacher-avatar img {
+  max-width: 100px !important;
+  max-height: 100px !important;
+}*/

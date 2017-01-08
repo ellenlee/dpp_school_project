@@ -44,9 +44,8 @@
 				<div>
 					<?php the_content(); ?>
 				</div>
-
 				<?php endwhile; endif; wp_reset_postdata(); ?>
-			</div><!-- posts -->
+			</div><!-- 課師資訊結束 --><!-- posts -->
 
 
 	<?php endwhile; ?>
