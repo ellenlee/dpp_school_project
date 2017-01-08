@@ -81,7 +81,12 @@
 		</div>
 	</div>
 
-	<?php get_template_part('slider', 'nivo'); ?>
+	<?php if( is_home() ) : ?>
+		<div>
+			<?php masterslider(1); ?>
+		</div>
+	<?php endif; ?>
+
 
 		<div id="content" class="site-content row clearfix clear">
 		<div class="container col-md-12">
