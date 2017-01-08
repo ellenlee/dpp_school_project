@@ -44,7 +44,9 @@
 	</head>
 
 	<body <?php body_class( $class ); ?>>
-		<div class="width100">
+
+		<div class="width100" style="display: flex; justify-content:center;">
+		<div style="width: 960px;">
 			<header id="header" class="width100 clearfix">
 				<!-- LOGO 與 主選單 -->
 				<div class="navbar width100pad clearfix" style="border: 1px solid red;">

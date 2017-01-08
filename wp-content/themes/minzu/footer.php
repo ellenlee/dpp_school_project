@@ -22,10 +22,10 @@
 						<?php wp_nav_menu( $footer_nav ); ?>
 						<div class="clear widget">
 							<?php get_sidebar( 'lt-footer' ); ?>
-						</div><!-- .widget -->	
-					</div><!-- widecol -->	
+						</div><!-- .widget -->
+					</div><!-- widecol -->
 					<div class="narcolrt alignright">
-						
+
 						<nav class="alignright social">
 							<ul>
 								<li class="alignleft nobull"><a href="http://twitter.com/professor" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/images/social/twitter-lg.png" alt="Twitter Icon" title="<?php bloginfo( 'title' ); ?> on Twitter"></a></li>
@@ -44,6 +44,7 @@
 					</div>
 				</div><!-- width100pad -->
 			</footer>
+			</div>
 		</div><!-- width100pad -->
 		<?php wp_footer(); ?>
 	</body>

@@ -1,4 +1,8 @@
+
 <?php get_header(); ?>
+
+
+
 	<section id="content">
 		<?php if( is_home() ) : ?>
 			<div>
@@ -46,3 +50,4 @@
 	</section>
 
 <?php get_footer(); ?>
+
