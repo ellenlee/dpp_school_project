@@ -69,7 +69,17 @@ get_header(); ?>
 					<?php endwhile; endif; wp_reset_postdata(); ?>
 				</div><!-- 課師資訊結束 -->
 
+
 	<footer class="entry-meta">
+		<div>
+			<h3>立刻報名</h3>
+			<?php echo do_shortcode('[contact-form-7 id="75" title="enroll-course" class-name= ]'); ?>
+
+		</div>
+
+
+
+
 		<?php
 			/* translators: used between list items, there is a space after the comma */
 			$category_list = get_the_category_list( __( ', ', 'inkness' ) );

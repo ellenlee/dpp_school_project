@@ -41,3 +41,11 @@ Inkness WordPress Theme is distributed under the terms of the GNU GPL v3.
   max-width: 100px !important;
   max-height: 100px !important;
 }*/
+
+/* Form Style */
+
+input[type="text"].form-course-name {
+  /*background-color: #eee;*/
+  /*border:none;*/
+  color: red;
+}
