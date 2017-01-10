@@ -213,3 +213,23 @@ require get_template_directory() . '/inc/jetpack.php';
 
 
 /* Contact Form 7 customize */
+
+/* 將首頁的主迴圈改成自訂文章類別： grass_course
+參考：https://developer.wordpress.org/reference/functions/query_posts/
+*/
+
+function reset_main_loop_on_homepage( $query ) {
+    if ( $query->is_home() && $query->is_main_query() ) {
+        $query->set( 'post_type', 'grass_course' );
+    }
+}
+add_action( 'pre_get_posts', 'reset_main_loop_on_homepage' );
+
+
+/* 解決WordPress樣式修改後沒反應的問題 */
+
+add_action( 'wp_enqueue_scripts', 'add_styles');
+function add_styles() {
+     $css_file = get_stylesheet_directory() . 'style.css';
+     wp_enqueue_style( 'css-file', get_stylesheet_directory_uri().'style.css', NULL, filemtime($css_file) );
+}

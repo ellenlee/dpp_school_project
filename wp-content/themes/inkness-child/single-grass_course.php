@@ -70,6 +70,7 @@ get_header(); ?>
 				</div><!-- 課師資訊結束 -->
 
 
+	<!-- 報名表單 -->
 	<footer class="entry-meta">
 		<div>
 			<h3>立刻報名</h3>
