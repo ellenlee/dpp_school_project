@@ -219,12 +219,11 @@ require get_template_directory() . '/inc/jetpack.php';
 */
 
 function reset_main_loop_on_homepage( $query ) {
-    if ( $query->is_home() && $query->is_main_query() ) {
-        $query->set( 'post_type', 'grass_course' );
-    }
+  if ( $query->is_home() && $query->is_main_query() ) {
+      $query->set( 'post_type', 'grass_course' );
+  }
 }
 add_action( 'pre_get_posts', 'reset_main_loop_on_homepage' );
-
 
 /* 解決WordPress樣式修改後沒反應的問題 */
 
