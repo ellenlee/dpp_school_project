@@ -37,6 +37,20 @@ Inkness WordPress Theme is distributed under the terms of the GNU GPL v3.
   align-items: center;
 }
 
+.flex-space {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+#contact-info {
+  /*border: 1px solid red;*/
+}
+
+#footertext {
+  text-align: center;
+}
+
 /*.teacher-avatar img {
   max-width: 100px !important;
   max-height: 100px !important;

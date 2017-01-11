@@ -1,4 +1,4 @@
-<div id="social-icons" class="col-md-5 col-xs-12">
+<div id="social-icons">
 			    <?php if ( of_get_option('facebook', true) != "") { ?>
 				 <a target="_blank" href="<?php echo esc_url(of_get_option('facebook', true)); ?>" title="Facebook" ><i class="social-icon fa fa-facebook-square"></i></a>
 	             <?php } ?>
@@ -26,5 +26,5 @@
 	             <?php if ( of_get_option('flickr', true) != "") { ?>
 				 <a target="_blank" href="<?php echo esc_url(of_get_option('flickr', true)); ?>" title="Flickr" ><i class="social-icon fa fa-flickr"></i></a>
 	             <?php } ?>
-         
+
 	</div>

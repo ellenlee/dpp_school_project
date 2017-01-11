@@ -13,13 +13,22 @@
 	<footer id="colophon" class="site-footer row" role="contentinfo">
 
 	<div class="container">
-	<?php if ( of_get_option('credit1', true) == 0 ) { ?>
-		<div class="site-info col-md-4">
-			<?php do_action( 'inkness_credits' ); ?>
-			<?php printf( __( 'Inkness Theme by %1$s.', 'inkness' ), '<a href="http://inkhive.com/" rel="designer">InkHive</a>' ); ?>
-		</div><!-- .site-info -->
-	<?php } ?>
-		<div id="footertext" class="col-md-7">
+		<div class="flex-space">
+			<div id="contact-info">
+				<h3>滴學堂 DDP School</h3>
+				<p>台北巿中正區北平東路30號10樓</p>
+				<p>TEL：02-2392-9989</p>
+				<p>Email：grass.tw@dpp.org.tw</p>
+			</div>
+
+			<div id="subscribe">
+				<h3>Subscribe & Follow</h3>
+				<span><?php get_template_part('social', 'fa'); ?></span>
+			</div>
+		</div>
+
+	<hr>
+		<div id="footertext" class="col-md-12">
         	<?php
 			if ( (function_exists( 'of_get_option' ) && (of_get_option('footertext2', true) != 1) ) ) {
 			 	echo of_get_option('footertext2', true); } ?>

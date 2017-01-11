@@ -37,7 +37,7 @@
 			?>
 			</div>
 
-			<?php get_template_part('social', 'fa'); ?>
+
 
 		</header><!-- #masthead -->
 	</div>
