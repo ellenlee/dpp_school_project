@@ -1,1 +1,0 @@
-<?php dynamic_sidebar ( 'Upper Footer' ); ?>

@@ -5,7 +5,6 @@
  * @package Inkness
  */
 
-
 /**
  * Initialize Options Panel
  */
@@ -224,11 +223,3 @@ function reset_main_loop_on_homepage( $query ) {
   }
 }
 add_action( 'pre_get_posts', 'reset_main_loop_on_homepage' );
-
-/* 解決WordPress樣式修改後沒反應的問題 */
-
-add_action( 'wp_enqueue_scripts', 'add_styles');
-function add_styles() {
-     $css_file = get_stylesheet_directory() . 'style.css';
-     wp_enqueue_style( 'css-file', get_stylesheet_directory_uri().'style.css', NULL, filemtime($css_file) );
-}

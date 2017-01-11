@@ -19,37 +19,241 @@ Inkness WordPress Theme is distributed under the terms of the GNU GPL v3.
 
 @import url('../inkness/style.css');
 
-/* single-grass_course 裡的教師資料 */
-
-#grass_teacher {
-  border: 1px solid #ccc;
-  padding: 30px;
+body {
+  background-color: #FDF6F6 !important;
+  padding-top: 85px;
 }
+
+#header-top {
+  background-color: #FDF6F6 !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+#content {
+  padding-top: 0px !important;
+}
+
+#primary {
+  margin-top: 20px !important;
+}
+
+/* index */
+
+.site-branding {
+  margin-top: 0px !important;
+}
+
+.site-branding h1 {
+  margin: 0px;
+  padding: 0px !important;
+}
+
+#header-2, #site-navigation {
+  background-color: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#header-2 {
+  width: 0px !important;
+}
+
+#header-3 {
+  display: none;
+}
+
+.menu-toggle {
+  border: 1px solid #00bac4;
+  padding: 2px 5px 2px 4px !important;
+  margin: 0 !important;
+  width: 32px !important;
+  border-radius: 1px;
+  position: absolute !important;
+  top: calc( 10px + (65px - 29px)/2 ) !important;
+  right: 30px ;
+}
+
+.menu-main-menu-container {
+    position: absolute;
+    left: 0;
+    top: 85px;
+    z-index: 1000;
+    background: #FDF6F6;
+    width: 100%;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+@media (min-width: 768px) {
+  #masthead {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .site-branding {
+    width: auto !important;
+
+  }
+
+  .menu-main-menu-container {
+    position: static;
+    /*left: 0;*/
+    /*top: 105px;*/
+    /*z-index: 1000;*/
+    /*background: #FDF6F6;*/
+    width: calc( 100vw - 150px );
+    border: none;
+  }
+
+  #header-3 {
+    display: block !important;
+  }
+
+  #header-3 .container {
+    /*text-align: center;*/
+  }
+
+  #header-3 #site-navigation {
+    /*float: none !important;*/
+  }
+
+  #header-3 ul {
+    /*margin-left: 12px !important;*/
+    border-top: 1px solid #ccc;
+  }
+
+  #site-navigation ul > li > a {
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
+  }
+
+  #header-3 #site-navigation li a {
+    font-size: 80%;
+    color: #00bac4 !important;
+  }
+
+  #social-icons {
+    float: none !important;
+    position: absolute;
+    right: 20%;
+    bottom: 20px;
+    margin: 0 !important;
+  }
+
+  #subscribe {
+    float: right;
+    position: absolute;
+    right: 20%;
+  }
+
+}
+
+@media screen and (max-width: 767px) {
+  #site-navigation .current_page_item > a {
+    border-top: 0px !important;
+  }
+}
+
+
+/* single-grass_course.php */
+
+#course-price h2 {
+  color: #00bac4 !important;
+}
+
 
 .teacher-avatar {
   max-width: 250px;
   max-height: 250px;
 }
 
-.flex {
+.teacher-box {
+  margin-bottom: 10px;
+}
+
+.teacher-avatar-xs {
+  border: 2px solid #eee;
+  border-radius: 100px;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.teacher-info {
+  width: calc( 90% - 50px);
+  font-size: 10px;
+  line-height: 145%;
+}
+
+#course-schedule {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#course-schedule .class-box {
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
 }
 
-.flex-space {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+#course-schedule .h1 {
+  width: 50px;
 }
 
-#contact-info {
-  /*border: 1px solid red;*/
+.class-date {
+  color: #00bac4;
 }
 
-#footertext {
-  text-align: center;
+.class-info {
+  border-left: 2px solid #eee;
+  padding-left: 15px;
+  text-align: left;
+  margin-left: 15px;
 }
+
+@media (min-width: 768px) {
+
+  #course-main-content {
+    display: flex;
+    justify-content: center;
+  }
+
+  #course-slider {
+    width: 400px;
+  }
+
+  #course-info {
+    width: calc( 100% - 400px );
+  }
+
+  .teacher-mainframe {
+    display: flex;
+    justify-content: center;
+  }
+
+  .teacher-box {
+    width: 30%;
+    flex-direction: column;
+    justify-content: flex-start !important;
+  }
+
+  .teacher-avatar-xs {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+}
+
 
 /*.teacher-avatar img {
   max-width: 100px !important;
@@ -63,3 +267,30 @@ input[type="text"].form-course-name {
   /*border:none;*/
   color: red;
   /*color: blue;*/
+}
+
+
+/* common element*/
+
+.hidden {
+  display: none;
+}
+
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.flex-space-center {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
