@@ -15,48 +15,46 @@ get_header(); ?>
 
 	<div id="primary-home" class="content-area col-md-12">
 		<main id="main" class="site-main row container" role="main">
-		<h3>下期主打</h3>
-		<?php if ( have_posts() ) : ?>
+			<h3>近期課程</h3>
 
-			<?php /* Start the Loop */ $ink_count = 0; $ink_row_count=0 ?>
-			<?php while ( have_posts() ) : the_post();
-				if ($ink_count == 0 ) {echo "<div class='row-".$ink_row_count." row'>";}
-			?>
+				<?php if ( have_posts() ) : ?>
 
-
-				<?php
-					/* Include the Post-Format-specific template for the content.
-					 * If you want to override this in a child theme, then include a file
-					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-					 */
-					get_template_part( 'content', 'home' );
+				<?php /* Start the Loop */ $ink_count = 0; $ink_row_count=0; $i = 1; ?>
+				<?php while ( have_posts() && $i <= 3 ) : the_post();
+					if ($ink_count == 0 ) {echo "<div class='row-".$ink_row_count." row'>";}
 				?>
 
+					<?php
+						/* Include the Post-Format-specific template for the content.
+						 * If you want to override this in a child theme, then include a file
+						 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+						 */
+						get_template_part( 'content', 'home' );
+					?>
 
-			<?php
-				if ($ink_count == 2 )
-					{
-						echo "</div>";
-						$ink_count=0;
-						$ink_row_count++;
+				<?php
+					if ($ink_count == 2 )
+						{
+							echo "</div>";
+							$ink_count=0;
+							$ink_row_count++;
+						}
+					else {
+						$ink_count++;
 					}
-				else {
-					$ink_count++;
-				}
+					 $i++; endwhile;
+				?>
 
-				endwhile;
-			?>
+				<?php inkness_pagination(); ?>
 
-			<?php inkness_pagination(); ?>
+			<?php else : ?>
 
-		<?php else : ?>
+				<?php get_template_part( 'no-results', 'index' ); ?>
 
-			<?php get_template_part( 'no-results', 'index' ); ?>
+			<?php endif; wp_reset_postdata(); ?>
 
-		<?php endif; ?>
-
-		<h3>網站介紹</h3>
-		<h3>主打講師</h3>
+			<h3>網站介紹</h3>
+			<h3>主打講師</h3>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
