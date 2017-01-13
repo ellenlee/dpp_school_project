@@ -226,14 +226,16 @@ body {
   #course-main-content {
     display: flex;
     justify-content: center;
+    align-items: flex-start;
   }
 
   #course-slider {
+    margin-top: 20px;
     width: 400px;
   }
 
-  #course-info {
-    width: calc( 100% - 400px );
+  #course-slider img {
+    max-width: 360px;
   }
 
   .teacher-mainframe {

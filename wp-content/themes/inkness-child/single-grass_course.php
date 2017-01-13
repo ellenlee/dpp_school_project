@@ -13,15 +13,20 @@ get_header(); ?>
 			<?php while ( have_posts() ) : the_post(); ?>
 
 
-			<!-- 確認所有變數 -->
+			<!-- 宣告課程相關變數 -->
 			<?php
-				$course_goal_list = get_post_custom_values( 'course_goal' );
-			?>
+				//Master Slider
+				$slider_id = get_post_custom_values( 'slider_id' )[0];
 
-			<div>
-				<h2>The Meta</h2>
-				<?php the_meta(); ?>
-			</div>
+				// 課程
+				$course_goal_list = explode( ",", get_post_custom_values( 'course_goal' )[0] );
+				$course_target = get_post_custom_values( 'course_target' )[0];
+				$course_price = get_post_custom_values( 'course_price' )[0]; // 價格
+
+				// 課表與內容
+				$class_info = get_post_custom_values( 'class_info' );
+				$class_num = count( $class_info );
+			?>
 
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 				<header class="entry-header">
@@ -29,7 +34,6 @@ get_header(); ?>
 
 					<div class="entry-meta">
 						<?php inkness_posted_on(); ?>
-						<p class="text-muted">（預計2017年3月份開班）</p>
 					</div><!-- .entry-meta -->
 				</header><!-- .entry-header -->
 
@@ -42,10 +46,24 @@ get_header(); ?>
 					</div>
 					<?php endif; ?>
 
-					<!-- 課程內容開始 -->
+					<?php
+						wp_link_pages( array(
+							'before' => '<div class="page-links">' . __( 'Pages:', 'inkness' ),
+							'after'  => '</div>',
+						) );
+					?>
+					<?php the_content(); ?>
+
+					<!-- 自訂課程內容開始 -->
 					<div id="course-main-content">
 						<div id="course-slider">
-							<?php masterslider(5); ?>
+							<?php
+								if( $slider_id ){
+									masterslider( $slider_id );
+								} else {
+									the_post_thumbnail();
+								}
+							?>
 						</div>
 
 						<div id="course-info">
@@ -53,7 +71,6 @@ get_header(); ?>
 								<h3>課程目標</h3>
 								<ul>
 									<?php
-
 										foreach( $course_goal_list as $key => $value){
 											echo "<li>$value</li>";
 										}
@@ -62,17 +79,17 @@ get_header(); ?>
 							</div>
 
 							<div id="course-target">
-								<h3>誰適合？</h3>
-								<p>在台北流浪的上班族、各種吃貨</p>
+								<h3>誰適合來</h3>
+								<p><?php echo $course_target; ?></p>
 							</div>
 
-							<div id="course-operation">
+							<div id="course-arrangment">
 								<h3>授課方式</h3>
 								<p>4堂課，毛奇2堂 + 裴英姬2堂，每堂2小時</p>
 							</div>
 
 							<div id="course-price">
-								<h2>$<?php echo get_post_custom_values( 'course_price' )[0]; ?></h2>
+								<h2>$<?php echo $course_price; ?></h2>
 							</div>
 						</div>
 					</div>
@@ -129,59 +146,25 @@ get_header(); ?>
 
 					<div id="course-schedule">
 						<h3>時程表</h3>
+
 						<div id="course-schedule-mainframe">
-							<div class="class-box">
-								<div class="h1">1</div>
-								<div class="class-info">
-									<h5 class="class-date">2017/3/14</h5>
-									<h4>燉出好心情，認識台灣米</h4>
-									<p>介紹台灣米，完成一道燉飯</p>
-								</div>
-							</div>
-							<div class="class-box">
-								<div class="h1">2</div>
-								<div class="class-info">
-									<h5 class="class-date">2017/3/14</h5>
-									<h4>嘿咻嘿咻，來廟會囉</h4>
-									<p>米粉炒+魷魚螺肉蒜</p>
-								</div>
-							</div>
-							<div class="class-box">
-								<div class="h1">3</div>
-								<div class="class-info">
-									<h5 class="class-date">2017/3/14</h5>
-									<h4>파삭 파삭！</h4>
-									<p>海鮮泡菜煎餅+辣炒年糕</p>
-								</div>
-							</div>
-							<div class="class-box">
-								<div class="h1">4</div>
-								<div class="class-info">
-									<h5 class="class-date">2017/3/14</h5>
-									<h4>飯桌菜</h4>
-									<p>韓式味增豆腐鍋+烤豬肉</p>
-								</div>
-							</div>
+							<?php
+							  foreach ( $class_info as $key => $value ) {
+							  	$the_info = explode( ",", $value );
+							?>
 
+										<div class="class-box">
+											<div class="h1"><?php echo $key+1; ?></div>
+											<div class="class-info">
+												<h5 class="class-date"><?php echo $the_info[1]; ?></h5>
+												<h4><?php echo $the_info[2]; ?></h4>
+												<p><?php echo $the_info[3]; ?></p>
+											</div>
+										</div>
+
+						  <?php } ?>
 						</div>
-
-
-					</div>
-
-
 					<hr>
-
-
-
-
-
-					<?php
-						wp_link_pages( array(
-							'before' => '<div class="page-links">' . __( 'Pages:', 'inkness' ),
-							'after'  => '</div>',
-						) );
-					?>
-					<?php the_content(); ?>
 				</div><!-- .entry-content -->
 
 
