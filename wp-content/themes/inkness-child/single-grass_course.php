@@ -24,6 +24,9 @@ get_header(); ?>
 				$course_arrangment = get_post_custom_values( 'course_arrangment' )[0];
 				$course_price = get_post_custom_values( 'course_price' )[0];
 
+				// teacher
+				$teacher_name = get_post_custom_values( 'teacher_name' );
+
 				// 課表與內容
 				$class_info = get_post_custom_values( 'class_info' );
 				$class_num = count( $class_info );
@@ -99,48 +102,34 @@ get_header(); ?>
 					<!-- 講師資訊 -->
 					<div id="grass_teacher">
 						<div class="teacher-mainframe">
-							<div class="teacher-box flex-space-center">
-								<div class="teacher-avatar-xs">
-									<img src="http://localhost/wp-content/uploads/2016/12/mokki.jpg" alt="">
-								</div>
-								<p class="teacher-info">蕭琮容（毛奇），深夜女子料理習作粉絲團主，著有《深夜女子的公寓料理》。</p>
-							</div>
-							<div class="teacher-box flex-space-center">
-								<div class="teacher-avatar-xs">
-									<img src="http://placehold.it/100x100" alt="">
-								</div>
-								<p class="teacher-info">裴英姬，韓國媽媽，著有《英姬好料理》。</p>
-							</div>
-						</div>
-
-
-						<div class="hidden">
 							<?php
-								$grass_teacher_name = get_post_custom_values( 'teacher' );
-								// The Query
+							  foreach ( $teacher_name as $key => $value ) {
+
+						  	// The Query
 								$grass_teacher_param = array(
 									'post_type' => 'grass_teacher',
-									'title' => $grass_teacher_name[0],
-									// 'posts_count' => '1',
-									);
+									'title' => $value,
+									'posts_count' => '1',
+								);
+
 								$the_query = new WP_Query( $grass_teacher_param );
 
 								if ( $the_query->have_posts() ) : while( $the_query->have_posts() ) : ($the_query->the_post());
 							?>
 
 
-							<div class="flex">
-								<div class="teacher-avatar"><?php the_post_thumbnail(); ?></div>
-								<div style="margin-left: 25px">
-									<h3 class="teacher-name">
-										<a href="<?php the_permalink(); ?>">
-											<?php the_title(); ?>
-										</a>
-									</h3>
-									<?php the_content(); ?>
-								</div>
-							</div>
-							<?php endwhile; endif; wp_reset_postdata(); ?>
+								<a class="teacher-box flex-space-center" href="<?php the_permalink(); ?>">
+									<div class="teacher-avatar-xs"><?php the_post_thumbnail(); ?>
+									</div>
+									<h4 class="teacher-name"><?php echo the_title(); ?></h4>
+									<?php echo the_content(); ?>
+								</a>
+
+							<?php
+								endwhile; endif; wp_reset_postdata();
+						   	}
+						  ?>
+
 						</div>
 					</div><!-- 課師資訊結束 -->
 					<hr>
@@ -154,19 +143,19 @@ get_header(); ?>
 							  	$the_info = explode( ",", $value );
 							?>
 
-										<div class="class-box">
-											<div class="h1"><?php echo $key+1; ?></div>
-											<div class="class-info">
-												<h5 class="class-date"><?php echo $the_info[1]; ?></h5>
-												<h4><?php echo $the_info[2]; ?></h4>
-												<p><?php echo $the_info[3]; ?></p>
-											</div>
-										</div>
+								<div class="class-box">
+									<div class="h1"><?php echo $key+1; ?></div>
+									<div class="class-info">
+										<h5 class="class-date"><?php echo $the_info[1]; ?></h5>
+										<h4><?php echo $the_info[2]; ?></h4>
+										<p><?php echo $the_info[3]; ?></p>
+									</div>
+								</div>
 
 						  <?php } ?>
 						</div>
-					<hr>
-				</div><!-- .entry-content -->
+						<hr>
+					</div><!-- .entry-content -->
 
 
 	<footer class="entry-meta">

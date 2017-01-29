@@ -176,6 +176,7 @@ body {
 
 .teacher-box {
   margin-bottom: 10px;
+  padding: 10px;
 }
 
 .teacher-avatar-xs {
@@ -186,8 +187,12 @@ body {
   overflow: hidden;
 }
 
-.teacher-info {
-  width: calc( 90% - 50px);
+a.teacher-box:hover {
+  text-decoration: none;
+  background: #eee;
+}
+
+.teacher-box p {
   font-size: 10px;
   line-height: 145%;
 }
@@ -245,6 +250,8 @@ body {
 
   .teacher-box {
     width: 30%;
+    margin-left: 15px;
+    margin-right: 15px;
     flex-direction: column;
     justify-content: flex-start !important;
   }
