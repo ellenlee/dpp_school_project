@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-12-07 05:52:50+0000\n"
+"PO-Revision-Date: 2016-12-06 14:17:20+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -164,7 +164,7 @@ msgstr "一個全新預設佈景主題可讓你的網站透過引人入勝的精
 
 #: wp-admin/about.php:54
 msgid "Presenting Twenty Seventeen"
-msgstr "「貳零壹柒」介紹"
+msgstr "Twenty Seventeen 介紹"
 
 #: wp-admin/about.php:37 wp-admin/credits.php:23 wp-admin/freedoms.php:22
 msgid "Thank you for updating to the latest version! WordPress %s helps you get your site set up the way you want it."

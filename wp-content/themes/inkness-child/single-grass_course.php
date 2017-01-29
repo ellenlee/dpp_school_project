@@ -21,7 +21,8 @@ get_header(); ?>
 				// 課程
 				$course_goal_list = explode( ",", get_post_custom_values( 'course_goal' )[0] );
 				$course_target = get_post_custom_values( 'course_target' )[0];
-				$course_price = get_post_custom_values( 'course_price' )[0]; // 價格
+				$course_arrangment = get_post_custom_values( 'course_arrangment' )[0];
+				$course_price = get_post_custom_values( 'course_price' )[0];
 
 				// 課表與內容
 				$class_info = get_post_custom_values( 'class_info' );
@@ -85,7 +86,7 @@ get_header(); ?>
 
 							<div id="course-arrangment">
 								<h3>授課方式</h3>
-								<p>4堂課，毛奇2堂 + 裴英姬2堂，每堂2小時</p>
+								<p><?php echo $course_arrangment; ?></p>
 							</div>
 
 							<div id="course-price">
