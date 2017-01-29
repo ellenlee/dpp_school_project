@@ -15,40 +15,43 @@ get_header(); ?>
 
 			<!-- 宣告課程相關變數 -->
 			<?php
-				//Master Slider
+				//video and slider
+				$video_embed_link = get_post_custom_values( 'video_embed_link' )[0];
 				$slider_id = get_post_custom_values( 'slider_id' )[0];
 
 				// 課程
+				$course_copy = get_the_content();
 				$course_goal_list = explode( ",", get_post_custom_values( 'course_goal' )[0] );
 				$course_target = get_post_custom_values( 'course_target' )[0];
+				$course_prepare = get_post_custom_values( 'course_prepare' )[0];
 				$course_arrangment = get_post_custom_values( 'course_arrangment' )[0];
-				$course_price = get_post_custom_values( 'course_price' )[0];
 
 				// teacher
-				$teacher_name = get_post_custom_values( 'teacher_name' );
+				$teacher_name = get_post_custom_values( 'course_teacher_name' );
 
 				// 課表與內容
 				$class_info = get_post_custom_values( 'class_info' );
 				$class_num = count( $class_info );
+
+				// price
+				$price = get_post_custom_values( 'course_price' )[0];
+				if( $price ){
+					$course_price = $price;
+				} else {
+					$course_price = 250*$class_num;
+				}
 			?>
 
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 				<header class="entry-header">
 					<h1 class="entry-title"><?php the_title(); ?></h1>
 
-					<div class="entry-meta">
-						<?php inkness_posted_on(); ?>
+					<div class="entry-meta tax-name">
+
 					</div><!-- .entry-meta -->
 				</header><!-- .entry-header -->
 
 				<div class="entry-content">
-					<?php if (has_post_thumbnail() ) : ?>
-					<div class="featured-image-single hidden">
-						<?php
-							the_post_thumbnail();
-							?>
-					</div>
-					<?php endif; ?>
 
 					<?php
 						wp_link_pages( array(
@@ -56,143 +59,169 @@ get_header(); ?>
 							'after'  => '</div>',
 						) );
 					?>
-					<?php the_content(); ?>
 
 					<!-- 自訂課程內容開始 -->
 					<div id="course-main-content">
-						<div id="course-slider">
-							<?php
-								if( $slider_id ){
-									masterslider( $slider_id );
-								} else {
-									the_post_thumbnail();
-								}
-							?>
-						</div>
+						<div id="course-entry-content">
+							<div id="course-entry-content-left">
+								<div id="course-slider">
+									<?php	if( $video_embed_link ){ ?>
+										<iframe width="400" height="225" src="<?php echo $video_embed_link; ?>" frameborder="0" allowfullscreen></iframe>
+									<?php	}	?>
 
-						<div id="course-info">
-							<div id="course-goal">
-								<h3>課程目標</h3>
-								<ul>
 									<?php
-										foreach( $course_goal_list as $key => $value){
-											echo "<li>$value</li>";
+										if( $slider_id ){
+											masterslider( $slider_id );
+										} else {
+											the_post_thumbnail();
 										}
 									?>
-								</ul>
+								</div>
+								<?php if( $course_price ){ ?>
+									<div class="course-price price-big">
+										<h2>$<?php echo $course_price; ?></h2>
+									</div>
+								<?php } ?>
 							</div>
 
-							<div id="course-target">
-								<h3>誰適合來</h3>
-								<p><?php echo $course_target; ?></p>
-							</div>
+							<div id="course-entry-content-right">
+								<div id="course-info">
+									<?php
+										if( $course_copy ){
+										  echo '<div id="course-copy">', the_content(),'</div><hr>';
+									  }
 
-							<div id="course-arrangment">
-								<h3>授課方式</h3>
-								<p><?php echo $course_arrangment; ?></p>
-							</div>
+										if( $course_goal_list[0] ){
+											echo "
+												<div>
+													<h3>課程目標</h3>
+													<ul>";
+														foreach( $course_goal_list as $key => $value){
+															echo "<li>$value</li>";
+														}
+											echo "</ul></div>";
+										}
 
-							<div id="course-price">
-								<h2>$<?php echo $course_price; ?></h2>
+										if( $course_target ){
+											echo "
+												<div>
+													<h3>誰適合來</h3>
+													<p>$course_target</p>
+												</div>
+											";
+										}
+
+										if( $course_prepare ){
+											echo "
+												<div>
+													<h3>課前準備</h3>
+													<p>$course_prepare</p>
+												</div>
+											";
+										}
+
+										if( $course_arrangment ){
+											echo "
+												<div>
+													<h3>授課方式</h3>
+													<p>$course_arrangment</p>
+												</div>
+											";
+										}
+
+										if( $course_price ){
+											echo "
+												<div class='course-price price-xs'>
+													<h2>$$course_price</h2>
+												</div>
+											";
+										}
+									?>
+								</div>
 							</div>
 						</div>
 					</div>
 					<hr>
 
 					<!-- 講師資訊 -->
-					<div id="grass_teacher">
-						<div class="teacher-mainframe">
-							<?php
-							  foreach ( $teacher_name as $key => $value ) {
+					<?php if( $teacher_name ){ ?>
+						<div id="grass_teacher">
+							<div class="teacher-mainframe">
+								<?php
+								  foreach ( $teacher_name as $key => $value ) {
 
-						  	// The Query
-								$grass_teacher_param = array(
-									'post_type' => 'grass_teacher',
-									'title' => $value,
-									'posts_count' => '1',
-								);
+							  	// The Query
+									$grass_teacher_param = array(
+										'post_type' => 'grass_teacher',
+										'title' => $value,
+										'posts_count' => '1',
+									);
 
-								$the_query = new WP_Query( $grass_teacher_param );
+									$the_query = new WP_Query( $grass_teacher_param );
 
-								if ( $the_query->have_posts() ) : while( $the_query->have_posts() ) : ($the_query->the_post());
-							?>
+									if ( $the_query->have_posts() ) : while( $the_query->have_posts() ) : ($the_query->the_post());
+								?>
 
 
-								<a class="teacher-box flex-space-center" href="<?php the_permalink(); ?>">
-									<div class="teacher-avatar-xs"><?php the_post_thumbnail(); ?>
-									</div>
-									<h4 class="teacher-name"><?php echo the_title(); ?></h4>
-									<?php echo the_content(); ?>
-								</a>
+									<a class="teacher-box flex-space-center" href="<?php the_permalink(); ?>">
+										<?php if( has_post_thumbnail() ){ ?>
+											<div class="teacher-avatar-xs"><?php the_post_thumbnail(); ?>
+										</div>
+										<?php } ?>
+										<div class="teacher-info">
+											<h4 class="teacher-name"><?php echo the_title(); ?></h4>
+											<?php echo the_excerpt(); ?>
+										</div>
+									</a>
 
-							<?php
-								endwhile; endif; wp_reset_postdata();
-						   	}
-						  ?>
+								<?php
+										endwhile;
 
-						</div>
-					</div><!-- 課師資訊結束 -->
-					<hr>
-
-					<div id="course-schedule">
-						<h3>時程表</h3>
-
-						<div id="course-schedule-mainframe">
-							<?php
-							  foreach ( $class_info as $key => $value ) {
-							  	$the_info = explode( ",", $value );
-							?>
-
-								<div class="class-box">
-									<div class="h1"><?php echo $key+1; ?></div>
-									<div class="class-info">
-										<h5 class="class-date"><?php echo $the_info[1]; ?></h5>
-										<h4><?php echo $the_info[2]; ?></h4>
-										<p><?php echo $the_info[3]; ?></p>
-									</div>
-								</div>
-
-						  <?php } ?>
+									elseif( $teacher_name ): ?>
+										<div class="teacher-box">
+											<h4><?php echo $value; ?></h4>
+										</div>
+								<?php
+									endif; wp_reset_postdata(); } ?>
+							</div>
 						</div>
 						<hr>
-					</div><!-- .entry-content -->
+					<?php	} ?><!-- 講師資訊結束 -->
 
+					<?php if( $class_num > 0 ): ?>
+						<div id="course-schedule">
+							<div id="course-schedule-mainframe">
+								<?php
+									foreach ( $class_info as $key => $value ) {
+								  	$the_info = explode( ",", $value );
+								?>
+									<div class="class-box">
+										<div class="h1"><?php echo $key+1; ?></div>
+										<div class="class-info">
+											<h5 class="class-date"><?php echo $the_info[1]; ?></h5>
+											<h4><?php echo $the_info[2]; ?></h4>
+											<p class="class-content">
+												<?php
+													if( count($the_info) > 4 ){
+														for($i = 3; $i <= count($the_info); $i++){
+														  echo $the_info[$i]."<br>";
+													  }
+													} else{
+														echo $the_info[3];
+													}
+												?>
+											</p>
+										</div>
+									</div>
+							  <?php } ?>
+							</div>
+							<hr>
+						</div><!-- .entry-content -->
+					<?php endif; ?>
+				</div>
 
 	<footer class="entry-meta">
-
-		<?php
-			/* translators: used between list items, there is a space after the comma */
-			$category_list = get_the_category_list( __( ', ', 'inkness' ) );
-
-			/* translators: used between list items, there is a space after the comma */
-			$tag_list = get_the_tag_list( '', __( ', ', 'inkness' ) );
-
-			if ( ! inkness_categorized_blog() ) {
-				// This blog only has 1 category so we just need to worry about tags in the meta text
-				if ( '' != $tag_list ) {
-					$meta_text = __( 'This entry was tagged %2$s. Bookmark the <a href="%3$s" rel="bookmrk">permalink</a>.', 'inkness' );
-				} else {
-					$meta_text = __( 'Bookmark the <a href="%3$s" rel="bookmark">permalink</a>.', 'inkness' );
-				}
-
-			} else {
-				// But this blog has loads of categories so we should probably display them here
-				if ( '' != $tag_list ) {
-					$meta_text = __( 'This entry was posted in %1$s and tagged %2$s. Bookmark the <a href="%3$s" rel="bookmark">permalink</a>.', 'inkness' );
-				} else {
-					$meta_text = __( 'This entry was posted in %1$s. Bookmark the <a href="%3$s" rel="bookmark">permalink</a>.', 'inkness' );
-				}
-
-			} // end check for categories on this blog
-
-			printf(
-				$meta_text,
-				$category_list,
-				$tag_list,
-				get_permalink()
-			);
-		?>
-
+		<?php the_taxonomies( ); ?>
 		<?php edit_post_link( __( 'Edit', 'inkness' ), '<span class="edit-link">', '</span>' ); ?>
 	</footer><!-- .entry-meta -->
 </article><!-- #post-## -->

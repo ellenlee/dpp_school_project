@@ -223,3 +223,14 @@ function reset_main_loop_on_homepage( $query ) {
   }
 }
 add_action( 'pre_get_posts', 'reset_main_loop_on_homepage' );
+
+/**
+ * Filter the excerpt "read more" string.
+ *
+ * @param string $more "Read more" excerpt string.
+ * @return string (Maybe) modified "read more" excerpt string.
+ */
+function wpdocs_excerpt_more( $more ) {
+    return '.....';
+}
+add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );

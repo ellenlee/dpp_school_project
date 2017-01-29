@@ -5,12 +5,12 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class("homa archive col-md-4"); ?>>
-<div class="article-wrapper">	
+<div class="article-wrapper">
 	<?php if (has_post_thumbnail()) : ?>
 	<div class="featured-thumb col-md-12 col-xs-12">
 	<a href="<?php the_permalink(); ?>">
 	<?php
-		the_post_thumbnail('homepage-banner');	
+		the_post_thumbnail('homepage-banner');
 	?>
 	</a>
 	</div>
@@ -36,5 +36,5 @@
 	</div><!-- .entry-content -->
 	<?php endif; ?>
 	</div>
-</div>	
+</div>
 </article><!-- #post-## -->
