@@ -15,8 +15,8 @@ get_header(); ?>
 
 	<div id="primary-home" class="content-area col-md-12">
 		<main id="main" class="site-main row container" role="main">
-			<div id="frontpage-course" style="border: 1px solid #ccc;">
-				<div>
+			<div id="frontpage-course">
+				<div class="frontpage-titlebox">
 					<h3>近期課程</h3>
 					<a href="grass_course/">> more</a>
 				</div>
@@ -57,16 +57,19 @@ get_header(); ?>
 
 				<?php endif; wp_reset_postdata(); ?>
 			</div>
-			<hr>
+			<hr class="line">
 
-			<div id="frontpage-teacher" style="border: 1px solid blue;">
-				<div>
+			<div id="frontpage-teacher">
+				<div class="frontpage-titlebox">
 					<h3>我們的老師</h3>
 					<a href="grass_teacher/">> more</a>
 				</div>
 
 				<?php
-					$arg_teacher = array(	'post_type' => 'grass_teacher' );
+					$arg_teacher = array(
+						'post_type' => 'grass_teacher',
+						'course_category' => 'star',
+					);
 					$the_query = new WP_Query( $arg_teacher );
 
 				  if ( $the_query->have_posts() ) :
