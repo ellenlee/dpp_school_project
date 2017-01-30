@@ -185,9 +185,8 @@ get_header(); ?>
 									endif; wp_reset_postdata(); } ?>
 							</div>
 						</div>
-						<hr>
 					<?php	} ?><!-- 講師資訊結束 -->
-
+					<hr>
 					<?php if( $class_num > 0 ): ?>
 						<div id="course-schedule">
 							<div id="course-schedule-mainframe">
@@ -215,11 +214,17 @@ get_header(); ?>
 									</div>
 							  <?php } ?>
 							</div>
-							<hr>
 						</div><!-- .entry-content -->
 					<?php endif; ?>
 				</div>
+	<div id="enroll-area" class="flex-center">
+		<div class="enroll-area-frame">
+			<h3>立刻報名</h3>
+			<?php echo do_shortcode('[contact-form-7 id="75" title="form-course-enrollment" html_class="form-course-enrollment"]'); ?>
+		</div>
+	</div>
 
+	<hr>
 	<footer class="entry-meta">
 		<?php the_taxonomies( ); ?>
 		<?php edit_post_link( __( 'Edit', 'inkness' ), '<span class="edit-link">', '</span>' ); ?>
@@ -241,10 +246,7 @@ get_header(); ?>
 		</main><!-- #main -->
 
 		<!-- 報名表單 -->
-		<footer>
-			<h3>立刻報名</h3>
-			<?php echo do_shortcode('[contact-form-7 id="75" title="enroll-course" class-name= ]'); ?>
-		</footer>
+
 	</div><!-- #primary -->
 
 <?php get_footer(); ?>

@@ -23,10 +23,10 @@
 				<p>TEL：02-2392-9989</p>
 				<p>Email：grass.tw@dpp.org.tw</p>
 			</div>
-
+			<hr class="line-small">
 			<div id="subscribe">
 				<h3>訂閱最新消息</h3>
-				<?php echo do_shortcode('[contact-form-7 id="218" title="form-subscribe"]'); ?>
+				<?php echo do_shortcode('[contact-form-7 id="218" title="form-subscribe" html_class="form-subscribe" ]'); ?>
 			</div>
 
 

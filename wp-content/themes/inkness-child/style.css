@@ -80,7 +80,7 @@ a {
 }
 
 .menu-toggle {
-  border: 1px solid #00bac4;
+  border: 1px solid #134d5f;
   padding: 2px 5px 2px 4px !important;
   margin: 0 !important;
   width: 32px !important;
@@ -88,11 +88,12 @@ a {
   position: absolute !important;
   top: calc( 10px + (65px - 29px)/2 ) !important;
   right: 30px ;
+  color: #134d5f !important;
 }
 
 .menu-toggle:hover {
-  background-color: #00bac4;
-  color: #134d5f;
+  border-color: #00bac4;
+  color: #00bac4 !important;
 }
 
 .menu-main-menu-container {
@@ -104,6 +105,18 @@ a {
     width: 100%;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
+}
+
+.menu-main-menu-container a {
+  color: #134d5f !important;
+}
+
+.menu-main-menu-container a:hover {
+  color: #00bac4 !important;
+}
+
+.menu-main-menu-container li:hover {
+  background-color: #eee !important;
 }
 
 .line {
@@ -137,6 +150,10 @@ a {
 @media (min-width: 768px) {
   .line {
     display: block;
+  }
+
+  .line-small {
+    display: none;
   }
 
   #masthead {
@@ -352,21 +369,6 @@ a.teacher-box:hover {
   }
 }
 
-
-/*.teacher-avatar img {
-  max-width: 100px !important;
-  max-height: 100px !important;
-}*/
-
-/* Form Style */
-
-input[type="text"].form-course-name {
-  /*background-color: #eee;*/
-  /*border:none;*/
-  color: red;
-  /*color: blue;*/
-}
-
 /* footer */
 
 footer#colophon {
@@ -384,6 +386,10 @@ footer h3, .name-and-fb div{
 
 @media (min-width: 768px) {
 
+  footer#colophon {
+    padding-top: 30px;
+  }
+
   footer div.container {
     display: flex;
     justify-content: space-between;
@@ -397,6 +403,147 @@ footer h3, .name-and-fb div{
 
 }
 
+/* form */
+
+.wpcf7 input {
+  padding: 6px 12px;
+  background-color: transparent;
+  color: #134d5f;
+  border: 1px solid #C2E1E7;
+  border-radius: 4px;
+}
+
+.wpcf7 input:focus {
+  background-color: rgba(194, 225, 231, 0.4);
+  color: #134d5f;
+}
+
+input[type=submit] {
+  font-size: 14px;
+  line-height: 1.4;
+  text-shadow: none;
+  box-shadow: none;
+  /*float: right;*/
+  background-color: transparent;
+}
+
+input[type=submit]:hover {
+  text-shadow: none;
+  box-shadow: none;
+}
+
+.wpcf7 form.form-subscribe {
+  color: #ccc;
+}
+
+.wpcf7 form.form-subscribe input {
+  color: #ccc;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  float: right
+}
+
+.wpcf7 form.form-subscribe input:focus {
+  color: #00bac4;
+  background-color: #134d5f;
+  border-color: #00bac4;
+}
+
+form.form-subscribe input[type=submit]:hover {
+  border-color: #00bac4;
+  color: #00bac4;
+  background-color: #134d5f;
+}
+
+/* form-course-enrollment */
+
+#form-enroll-frame h3 {
+  text-align: center;
+}
+
+form.form-course-enrollment {
+  color: #134d5f;
+}
+
+.basic-info {
+  background-color: rgba(194, 225, 231, 0.4);
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+form.form-course-enrollment .basic-info input {
+  margin: 0;
+  padding: 0 ;
+  border: none;
+  width: 200px;
+}
+
+form.form-course-enrollment input[type=submit],
+form.form-payment-confirm input[type=submit] {
+  width: 100%;
+  line-height: 1.8;
+  font-size: 16px;
+  color: #fff;
+  background-color: #00bac4;
+}
+
+form.form-course-enrollment input[type=submit]:hover,
+form.form-course-enrollment input[type=submit]:focus,
+form.form-payment-confirm input[type=submit]:hover,
+form.form-payment-confirm input[type=submit]:focus {
+  color: #fff;
+  background-color: #b7cb41;
+}
+
+@media (min-width: 768px) {
+  #enroll-area {
+    border: 1px solid #eee;
+  }
+
+  .enroll-area-frame {
+    display: flex;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  #enroll-area h3 {
+    margin: 0 20px 30px 0;
+    border-right: 3px solid #c2e1e7;
+    padding-right: 10px;
+    color: #509295;
+  }
+
+  .wpcf7-response-output {
+    width: 314px;
+    margin: 0 !important;
+  }
+
+  form.form-course-enrollment .basic-info input {
+    width: 270px;
+  }
+
+  form.form-course-enrollment label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  form.form-course-enrollment .wpcf7-form-control-wrap {
+    margin-left: 10px;
+  }
+
+  form.form-payment-confirm label {
+    width: 100px;
+    text-align: right;
+    margin-right: 10px ;
+  }
+
+  form.form-payment-confirm input[type=submit] {
+    width: 424px;
+  }
+}
+
+
 /* common element*/
 
 .hidden {
@@ -408,6 +555,12 @@ footer h3, .name-and-fb div{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.flex-center-top {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .flex-space-between {
