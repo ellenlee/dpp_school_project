@@ -12,30 +12,28 @@
 
 	<footer id="colophon" class="site-footer row" role="contentinfo">
 
-	<div class="container">
-		<span><?php get_template_part('social', 'fa'); ?></span>
-		<div>
-			<div id="subscribe">
-				<h3>訂閱我們</h3>
-				<form action="">
-					<label for="email">Email
-						<input type="text">
-					</label>
-				</form>
-			</div>
+		<div class="container">
 
 			<div id="contact-info">
-				<h3>滴學堂 DDP School</h3>
+				<div class="name-and-fb flex-space-between">
+					<h3>滴學堂 DDP School</h3>
+					<span class="social-icon-small"><?php get_template_part('social', 'fa'); ?></span>
+				</div>
 				<p>台北巿中正區北平東路30號10樓</p>
 				<p>TEL：02-2392-9989</p>
 				<p>Email：grass.tw@dpp.org.tw</p>
-				<br>
-				<span><small class="text-muted">&copy; 2017 DDP School. All Rights Reserved.</small></span>
+			</div>
+
+			<div id="subscribe">
+				<h3>訂閱最新消息</h3>
+				<?php echo do_shortcode('[contact-form-7 id="218" title="form-subscribe"]'); ?>
 			</div>
 
 
+
 		</div>
-		</div>
+		<br>
+		<div class="flex-center"><small class="text-muted">&copy; 2017 DDP School. All Rights Reserved.</small></div>
 	</footer><!-- #colophon -->
 
 </div><!-- #page -->

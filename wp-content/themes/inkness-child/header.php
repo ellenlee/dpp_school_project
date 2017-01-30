@@ -36,7 +36,6 @@
 			<?php
 			}
 			?>
-
 			</div>
 
 
@@ -72,7 +71,7 @@
 					</div>
 				</div><!-- #header-3 -->
 			</nav>
-
+		<span class="social-icon-big"><?php get_template_part('social', 'fa'); ?></span>
 		</header><!-- #masthead -->
 	</div>
 
