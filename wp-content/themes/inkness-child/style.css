@@ -495,6 +495,16 @@ form.form-payment-confirm input[type=submit]:focus {
   background-color: #b7cb41;
 }
 
+form.form-payment-confirm input {
+  width: 100%;
+}
+
+form.form-payment-confirm input.form-course-id {
+  border: none;
+  background-color: #c2e1e6;
+}
+
+
 @media (min-width: 768px) {
   #enroll-area {
     border: 1px solid #eee;
@@ -532,10 +542,18 @@ form.form-payment-confirm input[type=submit]:focus {
     margin-left: 10px;
   }
 
+  body.page-template-page-payment_confirm article {
+    width: 444px !important;
+  }
+
   form.form-payment-confirm label {
     width: 100px;
     text-align: right;
     margin-right: 10px ;
+  }
+
+  form.form-payment-confirm input {
+    width: 314px;
   }
 
   form.form-payment-confirm input[type=submit] {
