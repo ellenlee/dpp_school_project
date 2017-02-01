@@ -24,17 +24,17 @@ msgstr "貳零壹柒"
 msgid "Scroll down to content"
 msgstr "向下捲動至內容"
 
-#: functions.php:150
+#: functions.php:159
 msgctxt "Theme starter content"
 msgid "Coffee"
 msgstr "咖啡"
 
-#: functions.php:146
+#: functions.php:155
 msgctxt "Theme starter content"
 msgid "Sandwich"
 msgstr "三明治"
 
-#: functions.php:142
+#: functions.php:151
 msgctxt "Theme starter content"
 msgid "Espresso"
 msgstr "濃縮咖啡"
@@ -135,24 +135,24 @@ msgstr "色調"
 msgid "Default Header Image"
 msgstr "預設頁首圖片"
 
-#: functions.php:296
+#: functions.php:335
 msgid "Footer 2"
 msgstr "頁尾（二）"
 
-#: functions.php:288 functions.php:298
+#: functions.php:327 functions.php:337
 msgid "Add widgets here to appear in your footer."
 msgstr "在此新增小工具以顯示於你的頁尾。"
 
-#: functions.php:286
+#: functions.php:325
 msgid "Footer 1"
 msgstr "頁尾（一）"
 
-#: functions.php:230
+#: functions.php:269
 msgctxt "Libre Franklin font: on or off"
 msgid "on"
 msgstr "off"
 
-#: functions.php:60 functions.php:170
+#: functions.php:63 functions.php:183
 #: template-parts/navigation/navigation-top.php:12
 msgid "Top Menu"
 msgstr "頂部選單"
@@ -209,7 +209,7 @@ msgid "Search Results for: %s"
 msgstr "%s 的搜尋結果："
 
 #. translators: %s: Name of current post
-#: functions.php:323 template-parts/page/content-front-page-panels.php:43
+#: functions.php:362 template-parts/page/content-front-page-panels.php:43
 #: template-parts/page/content-front-page.php:44
 #: template-parts/post/content-audio.php:80
 #: template-parts/post/content-gallery.php:66
@@ -247,23 +247,23 @@ msgstr "選單"
 msgid "Skip to content"
 msgstr "跳至內容"
 
-#: functions.php:406
+#: functions.php:445
 msgid "Collapse child menu"
 msgstr "收合子選單"
 
-#: functions.php:405
+#: functions.php:444
 msgid "Expand child menu"
 msgstr "展開子選單"
 
-#: functions.php:278
+#: functions.php:317
 msgid "Add widgets here to appear in your sidebar."
 msgstr "在這裡加入小工具來讓它顯示於側邊欄。"
 
-#: functions.php:276
+#: functions.php:315
 msgid "Sidebar"
 msgstr "側邊欄"
 
-#: functions.php:61 functions.php:179
+#: functions.php:64 functions.php:194
 msgid "Social Links Menu"
 msgstr "社群鏈結選單"
 
@@ -271,7 +271,7 @@ msgstr "社群鏈結選單"
 msgid "Proudly powered by %s"
 msgstr "本站使用 %s 建置"
 
-#. #-#-#-#-#  twentyseventeen.pot (Twenty Seventeen 1.0)  #-#-#-#-#
+#. #-#-#-#-#  twentyseventeen.pot (Twenty Seventeen 1.1)  #-#-#-#-#
 #. Author URI of the plugin/theme
 #: template-parts/footer/site-info.php:13
 msgid "https://wordpress.org/"
