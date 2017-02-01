@@ -28,12 +28,13 @@
 				<h3>訂閱最新消息</h3>
 				<?php echo do_shortcode('[contact-form-7 id="218" title="form-subscribe" html_class="form-subscribe" ]'); ?>
 			</div>
-
-
-
 		</div>
 		<br>
-		<div class="flex-center"><small class="text-muted">&copy; 2017 DDP School. All Rights Reserved.</small></div>
+		<div class="flex-center"><small class="text-muted">
+			<?php
+				if ( (function_exists( 'of_get_option' ) && (of_get_option('footertext2', true) != 1) ) ) {
+				 	echo of_get_option('footertext2', true); } ?>
+		</small></div>
 	</footer><!-- #colophon -->
 
 </div><!-- #page -->

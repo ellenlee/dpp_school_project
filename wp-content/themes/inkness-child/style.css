@@ -17,6 +17,12 @@ body {
   color: #134d5f;
 }
 
+@media (max-width: 767px) {
+  img.main_logo {
+    width: calc( 100vw - 100px);
+  }
+}
+
 #header-top {
   background-color: #FDF6F6 !important;
   position: fixed;
@@ -25,7 +31,6 @@ body {
   right: 0;
   z-index: 9999;
   padding-bottom: 10px;
-  border-bottom: 1px solid #ccc;
 }
 
 #content {
@@ -45,6 +50,10 @@ a {
 }
 
 /* index */
+
+#header-top {
+  border-bottom: 1px solid #ccc;
+}
 
 .site-branding {
   margin-top: 0px !important;
@@ -89,11 +98,10 @@ a {
 .menu-main-menu-container {
     position: absolute;
     left: 0;
-    top: 80px;
+    top: 71px;
     z-index: 1000;
     background: #FDF6F6;
     width: 100%;
-    border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
 }
 
@@ -395,7 +403,7 @@ footer h3, .name-and-fb div{
 
 /* form */
 
-.wpcf7 input {
+.wpcf7 input, .wpcf7 textarea {
   padding: 6px 12px;
   background-color: transparent;
   color: #134d5f;
@@ -403,7 +411,12 @@ footer h3, .name-and-fb div{
   border-radius: 4px;
 }
 
-.wpcf7 input:focus {
+textarea {
+  height: 5em;
+}
+
+
+.wpcf7 input:focus, .wpcf7 textarea:focus {
   background-color: rgba(194, 225, 231, 0.4);
   color: #134d5f;
 }
@@ -413,7 +426,6 @@ input[type=submit] {
   line-height: 1.4;
   text-shadow: none;
   box-shadow: none;
-  /*float: right;*/
   background-color: transparent;
 }
 
@@ -430,13 +442,18 @@ input[type=submit]:hover {
   color: #ccc;
   background-color: transparent;
   border: 1px solid #ccc;
-  float: right
+  float: right;
+  width: 100%;
 }
 
 .wpcf7 form.form-subscribe input:focus {
   color: #00bac4;
   background-color: #134d5f;
   border-color: #00bac4;
+}
+
+form.form-subscribe input[type=submit] {
+  width: auto;
 }
 
 form.form-subscribe input[type=submit]:hover {
@@ -466,6 +483,10 @@ form.form-course-enrollment .basic-info input {
   padding: 0 ;
   border: none;
   width: 200px;
+}
+
+form.form-course-enrollment input {
+  width: 100%;
 }
 
 form.form-course-enrollment input[type=submit],
@@ -545,6 +566,12 @@ form.form-payment-confirm input.form-course-id {
   form.form-payment-confirm input {
     width: 314px;
   }
+
+  form.form-payment-confirm textarea {
+    width: 314px;
+    height: 5em;
+  }
+
 
   form.form-payment-confirm input[type=submit] {
     width: 424px;
