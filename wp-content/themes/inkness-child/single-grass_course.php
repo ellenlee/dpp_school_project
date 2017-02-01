@@ -34,12 +34,7 @@ get_header(); ?>
 				$class_num = count( $class_info );
 
 				// price
-				$price = get_post_custom_values( 'course_price' )[0];
-				if( $price ){
-					$course_price = $price;
-				} else {
-					$course_price = 250*$class_num;
-				}
+				$course_price = get_post_custom_values( 'course_price' )[0];
 			?>
 
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
