@@ -1,9 +1,8 @@
 /*
-Theme Name: Grass.tw - Inkness Child Theme
+Theme Name: Grass.tw
 Theme URI: http://inkhive.com/product/inkness/
 Description: Inkness is a Responsive theme with 3 Column Grid based homepage layout. This theme is overloaded with plenty of featured, including an amazing reponsive slider, Multiple Page Layouts, Configurable Sidebar Locations, Footer Widgets & Easy to use admin Panel. This theme is upgradable to a pro version to enable more features. .pot file has been provided, so that you can translate theme into any language. Already Translated into Italian and French.
 Version: 1.0.3.1
-Template: Inkness
 */
 
 
@@ -213,7 +212,6 @@ a {
   }
 }
 
-
 /* single-grass_course.php */
 
 #course-info {
@@ -330,6 +328,12 @@ a.teacher-box:hover {
 
   .price-big {
     display: block !important;
+    text-align: center;
+  }
+
+  .price-big a.btn {
+    color: white !important;
+    font-weight: 800;
   }
 
   .price-xs {
@@ -340,17 +344,34 @@ a.teacher-box:hover {
    margin-top: 0px;
   }
 
+  #teacher_and_schedule {
+    display: flex;
+  }
+
+  #grass_teacher {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+  }
+
+  #course-schedule {
+    /*border: 1px solid blue;*/
+  }
+
   .teacher-mainframe {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
   }
 
   .teacher-box {
     display: flex;
-    width: 30%;
+    width: 250px;
     padding-top: 10px;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-align: center;
   }
 
@@ -364,6 +385,24 @@ a.teacher-box:hover {
     width: 100px;
     height: 100px;
     margin-bottom: 10px;
+  }
+
+  /* teacher page*/
+
+  #teacher-main-frame {
+    display: flex;
+    justify-content: center;
+  }
+
+  #teacher-main-frame .featured-image-single{
+    width: 40%;
+    margin: 0 20px 0 0 ;
+  }
+
+  .teacher-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
 
@@ -382,6 +421,14 @@ footer h3, .name-and-fb div{
   margin: 10px 0 20px 0 !important;
 }
 
+#social-icons {
+  float: left !important;
+}
+
+#top-search {
+  display: none;
+}
+
 @media (min-width: 768px) {
 
   footer#colophon {
@@ -394,11 +441,19 @@ footer h3, .name-and-fb div{
     align-items: flex-start;
   }
 
-  .social-icon-small {
-    display: none;
+  #top-search {
+    display: block;
+    margin-bottom: 0px !important;
   }
 
+  #top-search label {
+    position: relative;
+    left: 10px;
+  }
 
+  #top-search input {
+    width: 280px !important;
+  }
 }
 
 /* form */
@@ -474,8 +529,8 @@ form.form-course-enrollment {
 
 .basic-info {
   background-color: rgba(194, 225, 231, 0.4);
-  padding: 15px;
-  margin-bottom: 15px;
+  padding: 10px 15px 3px 15px;
+  margin-bottom: 10px;
 }
 
 form.form-course-enrollment .basic-info input {
@@ -523,12 +578,15 @@ form.form-payment-confirm input.form-course-id {
 
   .enroll-area-frame {
     display: flex;
+    justify-content: center;
     padding-top: 20px;
     padding-bottom: 20px;
   }
 
   #enroll-area h3 {
-    margin: 0 20px 30px 0;
+    text-align: right;
+    width: 30%;
+    margin: 0 20px 0 0;
     border-right: 3px solid #c2e1e7;
     padding-right: 10px;
     color: #509295;
@@ -539,8 +597,20 @@ form.form-payment-confirm input.form-course-id {
     margin: 0 !important;
   }
 
+  form.form-course-enrollment .basic-info p {
+    margin-bottom: 0;
+  }
+
+  form.form-course-enrollment .basic-info span {
+    margin-left: 0;
+  }
+
   form.form-course-enrollment .basic-info input {
-    width: 270px;
+    width: 100%;
+  }
+
+  form.form-course-enrollment label#form-course-price {
+    justify-content: flex-start !important;
   }
 
   form.form-course-enrollment label {
@@ -577,6 +647,12 @@ form.form-payment-confirm input.form-course-id {
     width: 424px;
   }
 }
+
+/* 關於我們 - page */
+
+  #primary.full-width {
+    margin-bottom: 35px;
+  }
 
 
 /* common element*/
