@@ -16,12 +16,13 @@
 
 			<div id="contact-info">
 				<div class="name-and-fb flex-space-between">
-					<h3>滴學堂 DDP School</h3>
-					<span class="social-icon-small"><?php get_template_part('social', 'fa'); ?></span>
+					<h3>滴學堂 DPP School</h3>
 				</div>
 				<p>台北巿中正區北平東路30號10樓</p>
-				<p>TEL：02-2392-9989</p>
-				<p>Email：grass.tw@dpp.org.tw</p>
+				<p>TEL：02-2392-9989 #386</p>
+				<p>Email：dppschool@gmail.com</p>
+				<span class="social-icon-small "><?php get_template_part('social', 'fa'); ?></span>
+				<div class="clearfix"></div>
 			</div>
 			<hr class="line-small">
 			<div id="subscribe">

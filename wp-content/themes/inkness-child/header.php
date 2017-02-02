@@ -38,7 +38,6 @@
 			?>
 			</div>
 
-
 			<nav>
 				<div id="header-2">
 					<div class="container">
@@ -55,9 +54,7 @@
 							</nav><!-- #site-navigation -->
 					  </div>
 
-						<div id="top-search" class="hidden">
-							<?php get_search_form(); ?>
-						</div>
+
 					</div>
 				</div><!-- #header-2 -->
 
@@ -71,7 +68,9 @@
 					</div>
 				</div><!-- #header-3 -->
 			</nav>
-		<span class="social-icon-big"><?php get_template_part('social', 'fa'); ?></span>
+			<div>
+				<div id="top-search"><?php get_search_form(); ?></div>
+			</div>
 		</header><!-- #masthead -->
 	</div>
 
@@ -80,7 +79,7 @@
 
 	<?php if( is_home() ) : ?>
 		<div>
-			<?php masterslider(1); ?>
+			<?php masterslider(10); ?>
 		</div>
 	<?php endif; ?>
 
