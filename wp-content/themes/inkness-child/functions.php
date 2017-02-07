@@ -238,3 +238,37 @@ function wpdocs_excerpt_more( $more ) {
 }
 add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );
 
+function get_images_from_media_library( $title ) {
+    $args = array(
+        'post_type' => 'attachment',
+        'post_mime_type' =>'image',
+        'post_status' => 'inherit',
+        'title' => $title,
+        'posts_per_page' => 5,
+        'orderby' => 'rand'
+    );
+    $query_images = new WP_Query( $args );
+    $images = array();
+    foreach ( $query_images->posts as $image) {
+        $images[]= $image->guid;
+    }
+    return $images;
+}
+
+function display_images_from_media_library( $title ) {
+
+	$imgs = get_images_from_media_library( $title );
+	$html = '<div id="media-gallery">';
+
+	foreach($imgs as $img) {
+
+		$html .= '<img class='. $title .' src="' . $img . '" alt="" />';
+
+	}
+
+	$html .= '</div>';
+
+	return $html;
+
+}
+
