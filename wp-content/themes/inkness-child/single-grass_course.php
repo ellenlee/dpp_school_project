@@ -19,6 +19,8 @@
 				$course_target = get_post_custom_values( 'course_target' )[0];
 				$course_prepare = get_post_custom_values( 'course_prepare' )[0];
 				$course_arrangment = get_post_custom_values( 'course_arrangment' )[0];
+				$course_place = get_post_custom_values( 'course_place' )[0];
+				$admission_period = get_post_custom_values( 'admission_period' )[0];
 
 				// teacher
 				$teacher_name = get_post_custom_values( 'course_teacher_name' );
@@ -148,7 +150,7 @@
 								</div>
 								<?php if( $course_price ){ ?>
 									<div class="course-price price-big">
-										<h2>$<?php echo $course_price; ?></h2>
+										<h2><small>報名費</small>$<?php echo $course_price; ?></h2>
 										<br>
 										<a href="#enroll-area" class="btn btn-warning btn-lg">立刻報名</a>
 									</div>
@@ -191,6 +193,24 @@
 											echo "
 												<div>
 													<h3>授課時間</h3>
+													<p>$course_arrangment</p>
+												</div>
+											";
+										}
+
+										if( $course_place ){
+											echo "
+												<div>
+													<h3>上課地點</h3>
+													<p>$course_place</p>
+												</div>
+											";
+										}
+
+										if( $admission_period ){
+											echo "
+												<div>
+													<h3>報名時間</h3>
 													<p>$course_arrangment</p>
 												</div>
 											";

@@ -291,6 +291,12 @@ section#course-entry-section #course-video {
   font-size: 45px;
 }
 
+.course-price small {
+  color: #00bac4;
+  font-size: 15px;
+  margin-right: 5px;
+}
+
 .price-big {
   display: none !important;
 }
