@@ -128,12 +128,27 @@ a {
 
 .frontpage-titlebox {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: baseline;
 }
 
 .frontpage-titlebox h3 {
   margin-right: 20px;
+}
+
+.frontpage-titlebox a.btn {
+  color: white !important;
+  background-color: #00bac4;
+  border: none;
+}
+
+.frontpage-titlebox a.btn:hover {
+  color: white !important;
+  background-color: #578486;
+}
+
+.frontpage-titlebox .btn {
+  margin-left: 10px;
 }
 
 .article-wrapper .featured-thumb {

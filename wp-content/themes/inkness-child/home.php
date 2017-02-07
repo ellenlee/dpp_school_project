@@ -17,8 +17,8 @@ get_header(); ?>
 		<main id="main" class="site-main row container" role="main">
 			<div id="frontpage-course">
 				<div class="frontpage-titlebox">
-					<h3>近期課程</h3>
-					<a href="grass_course/">> more</a>
+					<h1>近期課程</h1>
+					<a href="grass_course/" class="btn btn-default btn-xs">more</a>
 				</div>
 
 					<?php if ( have_posts() ) : ?>
@@ -61,8 +61,8 @@ get_header(); ?>
 
 			<div id="frontpage-teacher">
 				<div class="frontpage-titlebox">
-					<h3>我們的老師</h3>
-					<a href="grass_teacher/">> more</a>
+					<h1>我們的老師</h1>
+					<a href="grass_teacher/" class="btn btn-default btn-xs">more</a>
 				</div>
 
 				<?php
