@@ -20,7 +20,7 @@
 				</div>
 				<p>台北巿中正區北平東路30號10樓</p>
 				<p>TEL：02-2392-9989 #386</p>
-				<p>Email：dppschool@gmail.com</p>
+				<p>Email：<?php echo get_bloginfo('admin_email'); ?></p>
 				<span class="social-icon-small "><?php get_template_part('social', 'fa'); ?></span>
 				<div class="clearfix"></div>
 			</div>
