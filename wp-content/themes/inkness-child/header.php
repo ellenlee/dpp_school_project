@@ -24,53 +24,57 @@
 	<?php do_action( 'inkness_before' ); ?>
 	<div id="header-top">
 		<header id="masthead" class="site-header row container" role="banner">
-			<div class="site-branding">
 
-			<?php if((of_get_option('logo', true) != "") && (of_get_option('logo', true) != 1) ) { ?>
-				<h1 class="site-title logo-container"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-				<?php
-				echo "<img class='main_logo' src='".of_get_option('logo', true)."' title='".esc_attr(get_bloginfo( 'name','display' ) )."'></a></h1>";
-				}
-			else { ?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<?php
-			}
-			?>
+			<div id="masthead-frame">
+				<div class="site-branding">
+
+					<?php if((of_get_option('logo', true) != "") && (of_get_option('logo', true) != 1) ) { ?>
+						<h1 class="site-title logo-container"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+						<?php
+						echo "<img class='main_logo' src='".of_get_option('logo', true)."' title='".esc_attr(get_bloginfo( 'name','display' ) )."'></a></h1>";
+						}
+					else { ?>
+						<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+					<?php
+					}
+					?>
+				</div>
+				<nav>
+					<div id="header-2">
+						<div class="container">
+							<div class="default-nav-wrapper">
+						    <nav id="site-navigation" class="main-navigation" role="navigation">
+					        <div id="nav-container">
+										<h1 class="menu-toggle"></h1>
+										<div class="screen-reader-text skip-link">
+											<a href="#content" title="<?php esc_attr_e( 'Skip to content', 'inkness' ); ?>"><?php _e( 'Skip to content', 'inkness' ); ?></a>
+										</div>
+
+										<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+				          </div>
+								</nav><!-- #site-navigation -->
+						  </div>
+
+
+						</div>
+					</div><!-- #header-2 -->
+
+					<div id="header-3">
+						<div class="container">
+						    <nav id="site-navigation" class="main-navigation" role="navigation">
+					        <div id="nav-container">
+										<?php wp_nav_menu( array( 'theme_location' => 'sub-nav-header' ) ); ?>
+				          </div>
+								</nav><!-- #site-navigation -->
+						</div>
+					</div><!-- #header-3 -->
+				</nav>
+
 			</div>
 
-			<nav>
-				<div id="header-2">
-					<div class="container">
-						<div class="default-nav-wrapper">
-					    <nav id="site-navigation" class="main-navigation" role="navigation">
-				        <div id="nav-container">
-									<h1 class="menu-toggle"></h1>
-									<div class="screen-reader-text skip-link">
-										<a href="#content" title="<?php esc_attr_e( 'Skip to content', 'inkness' ); ?>"><?php _e( 'Skip to content', 'inkness' ); ?></a>
-									</div>
-
-									<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-			          </div>
-							</nav><!-- #site-navigation -->
-					  </div>
-
-
-					</div>
-				</div><!-- #header-2 -->
-
-				<div id="header-3">
-					<div class="container">
-					    <nav id="site-navigation" class="main-navigation" role="navigation">
-				        <div id="nav-container">
-									<?php wp_nav_menu( array( 'theme_location' => 'sub-nav-header' ) ); ?>
-			          </div>
-							</nav><!-- #site-navigation -->
-					</div>
-				</div><!-- #header-3 -->
-			</nav>
-			<div>
-				<div id="top-search"><?php get_search_form(); ?></div>
-			</div>
+				<div>
+					<div id="top-search"><?php get_search_form(); ?></div>
+				</div>
 		</header><!-- #masthead -->
 	</div>
 

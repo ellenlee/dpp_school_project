@@ -120,6 +120,10 @@ a {
   background-color: #eee !important;
 }
 
+#menu-and-search {
+  border-color: 1px solid red;
+}
+
 .line {
   display: none;
 }
@@ -174,8 +178,12 @@ a {
 
   #masthead {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+  }
+
+  #masthead-frame {
+    display: flex;
   }
 
   .site-branding {
@@ -192,6 +200,10 @@ a {
     border: none;
   }
 
+  #header-2 #menu-main-menu li {
+    border-bottom: 1px solid #ccc;
+  }
+
   #header-3 {
     display: block !important;
   }
@@ -202,11 +214,6 @@ a {
 
   #header-3 #site-navigation {
     /*float: none !important;*/
-  }
-
-  #header-3 ul {
-    /*margin-left: 12px !important;*/
-    border-top: 1px solid #ccc;
   }
 
   #site-navigation ul > li > a {
