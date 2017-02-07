@@ -37,6 +37,47 @@ get_header(); ?>
 							<?php the_content(); ?>
 						</div>
 					</div>
+					<hr>
+
+					<section id="primary-home" class="course-teacher-frame">
+						<?php
+							// The Query
+
+							$grass_teacher_param = array(
+								'post_type' => 'grass_course',
+								'course_teacher' => get_the_title(),
+								'posts_count' => '1',
+							);
+
+							$the_query = new WP_Query( $grass_teacher_param );
+
+							if ( $the_query->have_posts() ) : ?>
+
+								<?php /* Start the Loop */ $ink_count = 0; $ink_row_count=0 ?>
+
+								<?php while ( $the_query->have_posts() ) : $the_query->the_post();
+								?>
+
+							<?php
+								/* Include the Post-Format-specific template for the content.
+								 * If you want to override this in a child theme, then include a file
+								 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+								 */
+								get_template_part( 'content', 'home' );
+							?>
+
+							<?php endwhile;	?>
+
+							<?php inkness_pagination(); ?>
+
+						<?php else : ?>
+
+							<?php get_template_part( 'no-results', 'index' ); ?>
+
+						<?php endif; ?>
+
+						<?php  wp_reset_postdata(); ?>
+					</section>
 
 				</div><!-- .entry-content -->
 

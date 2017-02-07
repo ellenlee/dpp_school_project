@@ -123,7 +123,6 @@
 		</div>
 	</section>
 
-
 		<div id="content" class="site-content row clearfix clear">
 		<div class="container col-md-12"><!-- header end -->
 
