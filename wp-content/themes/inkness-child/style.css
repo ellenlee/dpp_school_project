@@ -214,6 +214,42 @@ a {
 
 /* single-grass_course.php */
 
+/* course entry section */
+
+section#course-entry-section {
+  background-size: 0px;
+}
+
+section#course-entry-section h1.entry-title {
+  background-color: rgba(255,255,255,0.5);
+  color: #134d5f;
+}
+
+section#course-entry-section #course-video {
+  width: 100vw;
+  height: calc( 100vw * 0.562 );
+}
+
+@media (min-width: 768px) {
+
+  section#course-entry-section {
+    border: 1px solid #eee;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  section#course-entry-section #course-video {
+    width: 80vw;
+    height: calc( 80vw * 0.562 );
+    margin-bottom: 30px;
+  }
+
+}
+
+/* course content */
+
 #course-info {
  margin-top: 20px;
 }
@@ -299,6 +335,8 @@ a.teacher-box:hover {
 
 @media (min-width: 768px) {
 
+
+
   #course-main-content {
     display: flex;
     justify-content: center;
@@ -307,13 +345,20 @@ a.teacher-box:hover {
 
   #course-entry-content {
     display: flex;
+    justify-content: space-around;
+  }
+
+  #course-entry-content-right {
+    width: 45%;
+
   }
 
   #course-entry-content-left {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-start;
+    width: 45%;
   }
 
   #course-slider {
@@ -341,7 +386,7 @@ a.teacher-box:hover {
   }
 
   #course-info {
-   margin-top: 0px;
+   margin-top: -20px;
   }
 
   #teacher_and_schedule {
@@ -352,7 +397,7 @@ a.teacher-box:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50%;
+    width: 45%;
   }
 
   #course-schedule {
@@ -578,14 +623,21 @@ form.form-payment-confirm input.form-course-id {
 
   .enroll-area-frame {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     padding-top: 20px;
     padding-bottom: 20px;
+    width: 100%;
+  }
+
+  #enroll-area .enroll-area-title {
+    width: calc( 45% + 65px);
+    display: flex;
+    justify-content: flex-end;
   }
 
   #enroll-area h3 {
+    width: 60%;
     text-align: right;
-    width: 30%;
     margin: 0 20px 0 0;
     border-right: 3px solid #c2e1e7;
     padding-right: 10px;

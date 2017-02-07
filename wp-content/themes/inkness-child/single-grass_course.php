@@ -5,15 +5,9 @@
  * @package Inkness
  */
 
-get_header(); ?>
+?>
 
-	<div id="primary" class="content-area col-md-12">
-
-		<main id="main" class="site-main" role="main">
-			<?php while ( have_posts() ) : the_post(); ?>
-
-
-			<!-- 宣告課程相關變數 -->
+<!-- 宣告課程相關變數 -->
 			<?php
 				//video and slider
 				$video_embed_link = get_post_custom_values( 'video_embed_link' )[0];
@@ -37,15 +31,105 @@ get_header(); ?>
 				$course_price = get_post_custom_values( 'course_price' )[0];
 			?>
 
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+<meta charset="<?php bloginfo( 'charset' ); ?>">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><?php wp_title( '|', true, 'right' ); ?></title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+
+<?php wp_head(); ?>
+</head>
+
+
+
+
+<body <?php body_class(); ?>>
+<div id="parallax-bg"></div>
+<div id="page" class="hfeed site">
+	<?php do_action( 'inkness_before' ); ?>
+	<div id="header-top">
+		<header id="masthead" class="site-header row container" role="banner">
+			<div class="site-branding">
+
+			<?php if((of_get_option('logo', true) != "") && (of_get_option('logo', true) != 1) ) { ?>
+				<h1 class="site-title logo-container"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+				<?php
+				echo "<img class='main_logo' src='".of_get_option('logo', true)."' title='".esc_attr(get_bloginfo( 'name','display' ) )."'></a></h1>";
+				}
+			else { ?>
+				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+			<?php
+			}
+			?>
+			</div>
+
+			<nav>
+				<div id="header-2">
+					<div class="container">
+						<div class="default-nav-wrapper">
+					    <nav id="site-navigation" class="main-navigation" role="navigation">
+				        <div id="nav-container">
+									<h1 class="menu-toggle"></h1>
+									<div class="screen-reader-text skip-link">
+										<a href="#content" title="<?php esc_attr_e( 'Skip to content', 'inkness' ); ?>"><?php _e( 'Skip to content', 'inkness' ); ?></a>
+									</div>
+
+									<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+			          </div>
+							</nav><!-- #site-navigation -->
+					  </div>
+
+
+					</div>
+				</div><!-- #header-2 -->
+
+				<div id="header-3">
+					<div class="container">
+					    <nav id="site-navigation" class="main-navigation" role="navigation">
+				        <div id="nav-container">
+									<?php wp_nav_menu( array( 'theme_location' => 'sub-nav-header' ) ); ?>
+			          </div>
+							</nav><!-- #site-navigation -->
+					</div>
+				</div><!-- #header-3 -->
+			</nav>
+			<div>
+				<div id="top-search"><?php get_search_form(); ?></div>
+			</div>
+		</header><!-- #masthead -->
+	</div>
+
+
+
+
+	<?php if( is_home() ) : ?>
+		<div>
+			<?php masterslider(10); ?>
+		</div>
+	<?php endif; ?>
+
+<?php while ( have_posts() ) : the_post(); ?>
+
+	<!-- course-entry-section -->
+	<section id="course-entry-section" style="background-image: url('<?php the_post_thumbnail_url(); ?>')">
+		<div style="text-align: center">
+			<h1 class="entry-title"><?php the_title(); ?></h1>
+			<?php	if( $video_embed_link ){ ?>
+				<iframe id="course-video" src="<?php echo $video_embed_link; ?>" frameborder="0" allowfullscreen></iframe>
+			<?php	}	?>
+		</div>
+	</section>
+
+
+		<div id="content" class="site-content row clearfix clear">
+		<div class="container col-md-12"><!-- header end -->
+
+	<div id="primary" class="content-area col-md-12">
+		<main id="main" class="site-main" role="main">
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-				<header class="entry-header">
-					<h1 class="entry-title"><?php the_title(); ?></h1>
-
-					<div class="entry-meta tax-name">
-
-					</div><!-- .entry-meta -->
-				</header><!-- .entry-header -->
-
 				<div class="entry-content">
 
 					<?php
@@ -58,19 +142,10 @@ get_header(); ?>
 					<!-- 自訂課程內容開始 -->
 					<div id="course-main-content">
 						<div id="course-entry-content">
-							<div id="course-entry-content-left">
-								<div id="course-slider">
-									<?php	if( $video_embed_link ){ ?>
-										<iframe width="400" height="225" src="<?php echo $video_embed_link; ?>" frameborder="0" allowfullscreen></iframe>
-									<?php	}	?>
 
-									<?php
-										if( $slider_id ){
-											masterslider( $slider_id );
-										} else {
-											the_post_thumbnail();
-										}
-									?>
+							<div id="course-entry-content-left">
+								<div id="course-copy">
+									<?php the_content(); ?>
 								</div>
 								<?php if( $course_price ){ ?>
 									<div class="course-price price-big">
@@ -84,10 +159,6 @@ get_header(); ?>
 							<div id="course-entry-content-right">
 								<div id="course-info">
 									<?php
-										if( $course_copy ){
-										  echo '<div id="course-copy">', the_content(),'</div><hr>';
-									  }
-
 										if( $course_goal_list[0] ){
 											echo "
 												<div>
@@ -218,8 +289,9 @@ get_header(); ?>
 
 	<div id="enroll-area" class="flex-center">
 		<div class="enroll-area-frame">
-			<h3><br><br>立刻報名<br><small><?php the_title(); ?></small></h3>
-
+			<div class="enroll-area-title">
+				<h3><br><br>立刻報名<br><small><?php the_title(); ?></small></h3>
+			</div>
 			<?php echo do_shortcode('[contact-form-7 id="75" title="form-course-enrollment" html_class="form-course-enrollment"]'); ?>
 		</div>
 	</div>
