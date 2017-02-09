@@ -36,5 +36,13 @@
 	</div><!-- .entry-content -->
 	<?php endif; ?>
 	</div>
+	<?php
+		$term_list = wp_get_post_terms($post->ID, 'course_status', array("fields" => "names"));
+		if ( $term_list[0] ) { ?>
+		<div class="course_status">
+			<span class="btn btn-warning btn-xs"><?php echo $term_list[0]; ?></span>
+		</div>
+	<?php	}	?>
 </div>
+
 </article><!-- #post-## -->

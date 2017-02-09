@@ -171,6 +171,16 @@ a {
   text-align: right;
 }
 
+.course_status {
+  text-align: right;
+}
+
+.course_status .btn {
+  position: relative;
+  right: 15px;
+  bottom: 15px;
+}
+
 @media (min-width: 768px) {
   .line {
     display: block;
