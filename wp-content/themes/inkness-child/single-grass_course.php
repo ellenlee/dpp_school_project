@@ -39,16 +39,50 @@
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?php wp_title( '|', true, 'right' ); ?></title>
+
+<?php
+    $thumb = get_post_meta($post->ID,'_thumbnail_id',false);
+    $thumb = wp_get_attachment_image_src($thumb[0], false);
+    $thumb = $thumb[0];
+    $default_img = get_bloginfo('stylesheet_directory').'/images/default_icon.jpg';
+    ?>
+
+<?php if(is_single() || is_page()) { ?>
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="<?php single_post_title(''); ?>" />
+    <meta property="og:description" content="<?php
+    $out_excerpt = str_replace(array("\r\n", "\r", "\n"), "", get_the_excerpt());
+    echo apply_filters('the_excerpt_rss', $out_excerpt);
+    ?>" />
+    <meta property="og:url" content="<?php the_permalink(); ?>"/>
+    <meta property="og:image" content="<?php if ( $thumb[0] == null ) { echo $default_img; } else { echo $thumb; } ?>" />
+<?php  } else { ?>
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="<?php bloginfo('name'); ?>" />
+    <meta property="og:url" content="<?php bloginfo('url'); ?>"/>
+    <meta property="og:description" content="<?php bloginfo('description'); ?>" />
+    <meta property="og:image" content="<?php  if ( $thumb[0] == null ) { echo $default_img; } else { echo $thumb; } ?>" />
+<?php  }  ?>
+
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
 <?php wp_head(); ?>
+
+
 </head>
 
-
-
-
 <body <?php body_class(); ?>>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=314902858877210";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <div id="parallax-bg"></div>
 <div id="page" class="hfeed site">
 	<?php do_action( 'inkness_before' ); ?>
@@ -106,13 +140,6 @@
 
 
 
-
-	<?php if( is_home() ) : ?>
-		<div>
-			<?php masterslider(10); ?>
-		</div>
-	<?php endif; ?>
-
 <?php while ( have_posts() ) : the_post(); ?>
 
 	<!-- course-entry-section -->
@@ -154,6 +181,10 @@
 										<br>
 										<a href="#enroll-area" class="btn btn-warning btn-lg">立刻報名</a>
 									</div>
+
+									<!-- FB share button -->
+									<div class="fb-like" data-href="<?php the_permalink(); ?>" data-layout="button" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+
 								<?php } ?>
 							</div>
 
@@ -317,7 +348,7 @@
 
 	<hr>
 	<footer class="entry-meta">
-		<?php the_taxonomies( ); ?>
+		<?php the_taxonomies(); ?>
 		<?php edit_post_link( __( 'Edit', 'inkness' ), '<span class="edit-link">', '</span>' ); ?>
 	</footer><!-- .entry-meta -->
 </article><!-- #post-## -->
