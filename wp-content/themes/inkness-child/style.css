@@ -390,6 +390,7 @@ a.teacher-box:hover {
   #course-entry-content {
     display: flex;
     justify-content: space-around;
+    width: 100%;
   }
 
   #course-entry-content-right {
