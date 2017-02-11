@@ -242,7 +242,7 @@
 											echo "
 												<div>
 													<h3>報名時間</h3>
-													<p>$course_arrangment</p>
+													<p>$admission_period</p>
 												</div>
 											";
 										}
