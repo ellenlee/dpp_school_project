@@ -19,12 +19,13 @@
 
 			<div id="contact-info">
 				<div class="name-and-fb flex-space-between">
-					<?php echo display_images_from_media_library('main-logo-white'); ?><?php echo display_images_from_media_library('dpplogowhite'); ?>
+					<?php echo display_images_from_media_library('main-logo-white'); ?>
+					<a href="http://www.dpp.org.tw/" target="_blank" id="dpp-logo"><?php echo display_images_from_media_library('dpplogowhite'); ?></a>
 				</div>
 				<p>台北巿中正區北平東路30號10樓</p>
 				<p>TEL：02-2392-9989 #386</p>
 				<p>Email：<?php echo get_bloginfo('admin_email'); ?></p>
-				<span class="social-icon-small "><?php get_template_part('social', 'fa'); ?></span>
+				<span class="social-icon-small"><?php get_template_part('social', 'fa'); ?></span>
 				<div class="clearfix"></div>
 			</div>
 			<hr class="line-small">
