@@ -23,7 +23,7 @@
 				$admission_period = get_post_custom_values( 'admission_period' )[0];
 
 				// teacher
-				$teacher_name = get_post_custom_values( 'course_teacher_name' );
+				// $teacher_name = get_post_custom_values( 'course_teacher_name' );
 
 				// 課表與內容
 				$class_info = get_post_custom_values( 'class_info' );
@@ -274,49 +274,49 @@
 					</div>
 					<hr>
 					<div id="teacher_and_schedule">
-						<!-- 講師資訊 -->
-						<?php if( $teacher_name ){ ?>
-							<div id="grass_teacher">
-								<div class="teacher-mainframe">
-									<?php
-									  foreach ( $teacher_name as $key => $value ) {
 
-								  	// The Query
-										$grass_teacher_param = array(
-											'post_type' => 'grass_teacher',
-											'title' => $value,
-											'posts_count' => '1',
-										);
+						<?php
+							$teacher_list = wp_get_post_terms($post->ID, 'course_teacher', array("fields" => "names"));
 
-										$the_query = new WP_Query( $grass_teacher_param );
+							if( $teacher_list ){ ?>
+								<!-- 講師資訊 -->
+								<div id="grass_teacher">
+									<div class="teacher-mainframe">
+										<?php
+										  foreach ( $teacher_list as $key => $value ) {
 
-										if ( $the_query->have_posts() ) : while( $the_query->have_posts() ) : ($the_query->the_post());
-									?>
+										  	// The Query
+												$grass_teacher_param = array(
+													'post_type' => 'grass_teacher',
+													'title' => $value,
+													'posts_count' => '1',
+												);
 
+												$the_query = new WP_Query( $grass_teacher_param );
 
-										<a class="teacher-box flex-space-center" href="<?php the_permalink(); ?>">
-											<?php if( has_post_thumbnail() ){ ?>
-												<div class="teacher-avatar-xs"><?php the_post_thumbnail(); ?>
-											</div>
-											<?php } ?>
-											<div class="teacher-info">
-												<h4 class="teacher-name"><?php echo the_title(); ?></h4>
-												<?php echo the_excerpt(); ?>
-											</div>
-										</a>
+												if ( $the_query->have_posts() ) : while( $the_query->have_posts() ) : ($the_query->the_post()); ?>
 
-									<?php
-											endwhile;
+													<a class="teacher-box flex-space-center" href="<?php the_permalink(); ?>">
+														<?php if( has_post_thumbnail() ){ ?>
+															<div class="teacher-avatar-xs"><?php the_post_thumbnail(); ?>
+														</div>
+														<?php } ?>
+														<div class="teacher-info">
+															<h4 class="teacher-name"><?php echo the_title(); ?></h4>
+															<?php echo the_excerpt(); ?>
+														</div>
+													</a>
 
-										elseif( $teacher_name ): ?>
-											<div class="teacher-box">
-												<h4><?php echo $value; ?></h4>
-											</div>
-									<?php
-										endif; wp_reset_postdata(); } ?>
-								</div>
-							</div>
-						<?php	} ?><!-- 講師資訊結束 -->
+												<?php	endwhile;
+													elseif( $teacher_list ): ?>
+														<div class="teacher-box"><h4><?php echo $value; ?></h4></div>
+												<?php endif; wp_reset_postdata(); // Query end
+											} // foreach end
+										?>
+									</div><!-- div.teacher-mainframe-->
+								</div><!-- div#grass_teacher -->
+							<?php	} ?><!-- 講師資訊結束 -->
+
 						<?php if( $class_num > 0 ): ?>
 							<div id="course-schedule">
 								<div id="course-schedule-mainframe">
