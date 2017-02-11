@@ -85,6 +85,10 @@ a {
   display: none;
 }
 
+#site-navigation ul ul {
+  top: initial !important;
+}
+
 .menu-toggle {
   border: 1px solid #134d5f;
   padding: 2px 5px 2px 4px !important;

@@ -16,24 +16,26 @@
     $thumb = get_post_meta($post->ID,'_thumbnail_id',false);
     $thumb = wp_get_attachment_image_src($thumb[0], false);
     $thumb = $thumb[0];
-    $default_img = get_bloginfo('stylesheet_directory').'/images/default_icon.jpg';
+    $default_img = 'http://grass.tw/wp-content/uploads/dppschool-logo.png';
     ?>
 
 <?php if(is_single() || is_page()) { ?>
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="<?php single_post_title(''); ?>" />
-    <meta property="og:description" content="<?php
-    $out_excerpt = str_replace(array("\r\n", "\r", "\n"), "", get_the_excerpt());
-    echo apply_filters('the_excerpt_rss', $out_excerpt);
-    ?>" />
-    <meta property="og:url" content="<?php the_permalink(); ?>"/>
-    <meta property="og:image" content="<?php if ( $thumb[0] == null ) { echo $default_img; } else { echo $thumb; } ?>" />
-<?php  } else { ?>
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="<?php bloginfo('name'); ?>" />
-    <meta property="og:url" content="<?php bloginfo('url'); ?>"/>
-    <meta property="og:description" content="<?php bloginfo('description'); ?>" />
-    <meta property="og:image" content="<?php  if ( $thumb[0] == null ) { echo $default_img; } else { echo $thumb; } ?>" />
+  <meta property="fb:app_id" content="1931607947073761">
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="<?php single_post_title(''); ?>" />
+  <meta property="og:description" content="<?php
+  $out_excerpt = str_replace(array("\r\n", "\r", "\n"), "", get_the_excerpt());
+  echo apply_filters('the_excerpt_rss', $out_excerpt);
+  ?>" />
+  <meta property="og:url" content="<?php the_permalink(); ?>"/>
+  <meta property="og:image" content="<?php if ( $thumb[0] == null ) { echo $default_img; } else { echo $thumb; } ?>" />
+<?php  } else if(is_home()) { ?>
+  <meta property="fb:app_id" content="1931607947073761">
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="<?php bloginfo('name'); ?>" />
+  <meta property="og:url" content="<?php bloginfo('url'); ?>"/>
+  <meta property="og:description" content="<?php bloginfo('description'); ?>" />
+  <meta property="og:image" content="<?php echo $default_img; ?>" />
 <?php  }  ?>
 
 <link rel="profile" href="http://gmpg.org/xfn/11">
@@ -43,13 +45,24 @@
 </head>
 
 <body <?php body_class(); ?>>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=314902858877210";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1931607947073761',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_TW/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 
 <div id="parallax-bg"></div>
 <div id="page" class="hfeed site">
