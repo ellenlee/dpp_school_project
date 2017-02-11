@@ -6,6 +6,15 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class("homa archive col-md-4"); ?>>
 <div class="article-wrapper">
+		<?php
+			$term_list = wp_get_post_terms($post->ID, 'course_status', array("fields" => "all"));
+			if ( $term_list[0] ) { ?>
+			<div class="course_status">
+				<a href="<?php bloginfo('url'); ?>/<?php echo $term_list[0]->taxonomy; ?>/<?php echo $term_list[0]->slug; ?>">
+					<span class="btn btn-warning btn-xs"><?php echo $term_list[0]->name; ?></span>
+				</a>
+			</div>
+		<?php	}	?>
 	<?php if (has_post_thumbnail()) : ?>
 	<div class="featured-thumb col-md-12 col-xs-12">
 	<a href="<?php the_permalink(); ?>">
@@ -36,13 +45,6 @@
 	</div><!-- .entry-content -->
 	<?php endif; ?>
 	</div>
-	<?php
-		$term_list = wp_get_post_terms($post->ID, 'course_status', array("fields" => "names"));
-		if ( $term_list[0] ) { ?>
-		<div class="course_status">
-			<span class="btn btn-warning btn-xs"><?php echo $term_list[0]; ?></span>
-		</div>
-	<?php	}	?>
 </div>
 
 </article><!-- #post-## -->

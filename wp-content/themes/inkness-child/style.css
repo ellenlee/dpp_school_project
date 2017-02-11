@@ -172,13 +172,14 @@ a {
 }
 
 .course_status {
-  text-align: right;
+  position: absolute;
+  right: calc( 6% + 10px );
+  top: 10px;
+  z-index: 99;
 }
 
-.course_status .btn {
-  position: relative;
-  right: 15px;
-  bottom: 15px;
+.page-content, .entry-content, .entry-summary {
+  margin: 0.5em 0 0 0 ;
 }
 
 @media (min-width: 768px) {
