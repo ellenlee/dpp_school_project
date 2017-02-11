@@ -178,7 +178,7 @@
 								<?php if( $course_price ){ ?>
 									<div class="course-price price-big">
 										<h2><small>報名費</small>$<?php echo $course_price; ?></h2>
-										<br>
+										<p class="small">* 黨員全程參與可退報名費</p>
 										<a href="#enroll-area" class="btn btn-warning btn-lg">立刻報名</a>
 									</div>
 

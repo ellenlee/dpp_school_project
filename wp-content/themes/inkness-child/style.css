@@ -265,6 +265,16 @@ section#course-entry-section h1.entry-title {
   color: #134d5f;
 }
 
+#course-entry-content h2,
+#course-entry-content h3 {
+  margin-bottom: 0 !important;
+}
+
+#course-entry-content ul,
+#course-entry-content ol {
+  margin: 0 0 1.5em 2em !important;
+}
+
 section#course-entry-section #course-video {
   width: 100vw;
   height: calc( 100vw * 0.562 );
@@ -395,6 +405,7 @@ a.teacher-box:hover {
 
   #course-entry-content-right {
     width: 45%;
+    color: #134d5f;
 
   }
 
@@ -795,4 +806,8 @@ form.form-payment-confirm input.form-course-id {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+.small {
+  font-size: 10px;
 }
