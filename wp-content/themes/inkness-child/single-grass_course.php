@@ -22,9 +22,6 @@
 				$course_place = get_post_custom_values( 'course_place' )[0];
 				$admission_period = get_post_custom_values( 'admission_period' )[0];
 
-				// teacher
-				// $teacher_name = get_post_custom_values( 'course_teacher_name' );
-
 				// 課表與內容
 				$class_info = get_post_custom_values( 'class_info' );
 				$class_num = count( $class_info );
@@ -186,28 +183,30 @@
 										<h2><small>報名費</small>$<?php echo $course_price; ?></h2>
 										<p class="small">* 黨員全程參與可退報名費</p>
 										<a href="#enroll-area" class="btn btn-warning btn-lg">立刻報名</a>
+										<br>
+										<!-- FB share button -->
+										<div class="fb-like"
+											data-href="<?php the_permalink(); ?>"
+											data-layout="button"
+											data-action="like"
+										  data-width="450"
+											data-size="small"
+											data-show-faces="true"
+											data-share="true">
+										</div>
 									</div>
 
-									<!-- FB share button -->
-									<div class="fb-like"
-										data-href="<?php the_permalink(); ?>"
-										data-layout="button"
-										data-action="like"
-									  data-width="450"
-										data-size="small"
-										data-show-faces="true"
-										data-share="true"></div>
 
 								<?php } ?>
 							</div>
-
 							<div id="course-entry-content-right">
+								<hr class="visible-in-small">
 								<div id="course-info">
 									<?php
 										if( $course_goal_list[0] ){
 											echo "
 												<div>
-													<h3>課程目標</h3>
+													<h4>課程目標</h4>
 													<ul>";
 														foreach( $course_goal_list as $key => $value){
 															echo "<li>$value</li>";
@@ -218,7 +217,7 @@
 										if( $course_target ){
 											echo "
 												<div>
-													<h3>誰適合來</h3>
+													<h4>誰適合來</h4>
 													<p>$course_target</p>
 												</div>
 											";
@@ -227,7 +226,7 @@
 										if( $course_prepare ){
 											echo "
 												<div>
-													<h3>課前準備</h3>
+													<h4>課前準備</h4>
 													<p>$course_prepare</p>
 												</div>
 											";
@@ -236,7 +235,7 @@
 										if( $course_arrangment ){
 											echo "
 												<div>
-													<h3>授課時間</h3>
+													<h4>授課時間</h4>
 													<p>$course_arrangment</p>
 												</div>
 											";
@@ -245,7 +244,7 @@
 										if( $course_place ){
 											echo "
 												<div>
-													<h3>上課地點</h3>
+													<h4>上課地點</h4>
 													<p>$course_place</p>
 												</div>
 											";
@@ -254,20 +253,29 @@
 										if( $admission_period ){
 											echo "
 												<div>
-													<h3>報名時間</h3>
+													<h4>報名時間</h4>
 													<p>$admission_period</p>
 												</div>
 											";
 										}
 
-										if( $course_price ){
-											echo "
-												<div class='course-price price-xs'>
-													<h2>$$course_price</h2>
+										if( $course_price ){ ?>
+											<div class='course-price price-xs'>
+												<h2><small>報名費</small>$<?php echo $course_price; ?></h2>
+												<p class="small">* 黨員全程參與可退報名費</p>
+												<a href="#enroll-area" class="btn btn-warning btn-sm">立刻報名</a>
+												<!-- FB share button -->
+												<div class="fb-like"
+													data-href="<?php the_permalink(); ?>"
+													data-layout="button"
+													data-action="like"
+												  data-width="450"
+													data-size="small"
+													data-show-faces="true"
+													data-share="true">
 												</div>
-											";
-										}
-									?>
+											</div>
+									<?php }	?>
 								</div>
 							</div>
 						</div>

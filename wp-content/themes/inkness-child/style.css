@@ -305,10 +305,6 @@ section#course-entry-section #course-video {
 
 /* course content */
 
-#course-info {
- margin-top: 20px;
-}
-
 #course-copy {
   color: #333;
   font-size: 16px;
@@ -324,6 +320,11 @@ section#course-entry-section #course-video {
   color: #00bac4;
   font-size: 15px;
   margin-right: 5px;
+}
+
+.course-price a.btn {
+  color: white !important;
+  font-weight: 800;
 }
 
 .price-big {
@@ -411,7 +412,6 @@ a.teacher-box:hover {
   #course-entry-content-right {
     width: 45%;
     color: #134d5f;
-
   }
 
   #course-entry-content-left {
@@ -420,6 +420,7 @@ a.teacher-box:hover {
     align-items: center;
     justify-content: flex-start;
     width: 45%;
+    margin-top: 10px;
   }
 
   #course-slider {
@@ -437,17 +438,12 @@ a.teacher-box:hover {
     text-align: center;
   }
 
-  .price-big a.btn {
-    color: white !important;
-    font-weight: 800;
-  }
-
   .price-xs {
     display: none ;
   }
 
-  #course-info {
-   margin-top: -20px;
+  .visible-in-small {
+    display: none;
   }
 
   #teacher_and_schedule {
