@@ -32,9 +32,9 @@
 <?php  } else if(is_home()) { ?>
   <meta property="fb:app_id" content="1931607947073761">
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="<?php bloginfo('name'); ?>" />
+  <meta property="og:title" content="<?php bloginfo('name'); ?>｜<?php bloginfo('description'); ?>" />
   <meta property="og:url" content="<?php bloginfo('url'); ?>"/>
-  <meta property="og:description" content="<?php bloginfo('description'); ?>" />
+  <meta property="og:description" content="滴學堂是由民進黨搭建的學習平台，提供權益、生活、文化、語言、歷史等多樣化的課程，老少咸宜，輕鬆好玩。只要你熱愛學習與交流，你就是我們在找的夥伴！" />
   <meta property="og:image" content="<?php echo $default_img; ?>" />
 <?php  }  ?>
 
