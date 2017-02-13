@@ -61,7 +61,7 @@ get_header(); ?>
 
 			<div id="frontpage-teacher">
 				<div class="frontpage-titlebox">
-					<h1>我們的老師</h1>
+					<h1>師資陣容</h1>
 					<a href="grass_teacher/" class="btn btn-default btn-xs">more</a>
 				</div>
 
