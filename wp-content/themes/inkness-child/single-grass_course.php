@@ -33,6 +33,7 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9">
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?php wp_title( '|', true, 'right' ); ?></title>
@@ -141,7 +142,64 @@
 		</header><!-- #masthead -->
 	</div>
 
+<script>
+  // add a class on the body ie IE 10/11
+  var uA = navigator.userAgent;
+  if(uA.indexOf('Trident') != -1 && uA.indexOf('rv:11') != -1){
+      document.body.className = document.body.className+' ie11';
+      document.body.className = document.body.className+' iex';
+      document.getElementById("home_slider").style.display="none";
+      document.getElementById("top-search").style.display="none";
+      var x = document.getElementsByClassName("sub-menu");
+      var i;
+      for (i = 0; i < x.length; i++) {
+        console.log('ss');
+        x[i].style.display="none";
+      }
+      alert("不建議使用 ie 瀏覽器閱讀本網站");
+  }
+  if(uA.indexOf('Trident') != -1 && uA.indexOf('MSIE 10.0') != -1){
+      document.body.className = document.body.className+' ie10';
+      document.body.className = document.body.className+' iex';
+      document.getElementById("home_slider").style.display="none";
+      document.getElementById("top-search").style.display="none";
+      var x = document.getElementsByClassName("sub-menu");
+      var i;
+      for (i = 0; i < x.length; i++) {
+        console.log('ss');
+        x[i].style.display="none";
+      }
+      alert("不建議使用 ie 瀏覽器閱讀本網站");
+  }
 
+  if(navigator.appName=="Microsoft Internet Explorer"){
+    document.body.className = document.body.className+' iex';
+    document.getElementById("home_slider").style.display="none";
+    document.getElementById("top-search").style.display="none";
+    var x = document.getElementsByClassName("sub-menu");
+    var i;
+    for (i = 0; i < x.length; i++) {
+      console.log('ss');
+      x[i].style.display="none";
+    }
+    alert("不建議使用 ie 瀏覽器閱讀本網站");
+  }
+</script>
+
+<!--[IF IE]>
+    <script type="text/javascript">
+
+      document.getElementById("home_slider").style.display="none";
+      document.getElementById("top-search").style.display="none";
+      var x = document.getElementsByClassName("sub-menu");
+      var i;
+      for (i = 0; i < x.length; i++) {
+        console.log('ss');
+        x[i].style.display="none";
+      }
+      alert("不建議使用 ie 瀏覽器閱讀本網站");
+    </script>
+<![endif]-->
 
 <?php while ( have_posts() ) : the_post(); ?>
 
@@ -369,7 +427,6 @@
 
 	<hr>
 	<footer class="entry-meta">
-		<?php the_taxonomies(); ?>
 		<?php edit_post_link( __( 'Edit', 'inkness' ), '<span class="edit-link">', '</span>' ); ?>
 	</footer><!-- .entry-meta -->
 </article><!-- #post-## -->
