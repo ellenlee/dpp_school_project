@@ -20,7 +20,6 @@ get_header(); ?>
 					<h1>近期課程</h1>
 					<a href="grass_course/" class="btn btn-default btn-xs">more</a>
 				</div>
-
 					<?php if ( have_posts() ) : ?>
 
 					<?php /* Start the Loop */ $ink_count = 0; $ink_row_count=0; $i = 1; ?>
