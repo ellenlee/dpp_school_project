@@ -296,7 +296,7 @@ section#course-entry-section #course-video {
   }
 
   section#course-entry-section #course-video {
-    width: 80vw;
+    width: 60vw;
     height: calc( 80vw * 0.562 );
     margin-bottom: 30px;
   }
