@@ -9,6 +9,9 @@
 
 <!-- 宣告課程相關變數 -->
 			<?php
+        // course status
+        $term_list = wp_get_post_terms($post->ID, 'course_status', array("fields" => "slugs"));
+
 				//video and slider
 				$video_embed_link = get_post_custom_values( 'video_embed_link' )[0];
 				$slider_id = get_post_custom_values( 'slider_id' )[0];
@@ -249,12 +252,18 @@
 									<div class="course-price price-big">
 										<h2><small>報名費</small>$<?php echo $course_price; ?></h2>
 										<p class="small">* 黨員全程參與可退報名費</p>
+                      <?php if ( $term_list[0] == "active" ) { ?>
 
-                    <?php if() { ?>
+    										<a href="#enroll-area" class="btn btn-warning btn-lg">立刻報名</a>
 
-  										<a href="#enroll-area" class="btn btn-warning btn-lg">立刻報名</a>
+                      <?php } elseif ($term_list[0] == "pending") {?>
 
-                    <?php } ?>
+                        <a href="#enroll-area" class="btn btn-warning btn-lg">本課程已額滿，立刻登記候位</a>
+
+                      <?php } else {?>
+                        <div class="btn btn-closed btn-lg">報名截止</div>
+                      <?php } ?>
+
 										<br>
 										<!-- FB share button -->
 										<div class="fb-like"
@@ -431,12 +440,27 @@
 
 
 	<div id="enroll-area" class="flex-center">
-		<div class="enroll-area-frame">
-			<div class="enroll-area-title">
-				<h3><br><br>立刻報名<br><small><?php the_title(); ?></small></h3>
-			</div>
-			<?php echo do_shortcode('[contact-form-7 id="75" title="form-course-enrollment" html_class="form-course-enrollment"]'); ?>
-		</div>
+
+    <?php if ( $term_list[0] == "active" ) { ?>
+
+      <div class="enroll-area-frame">
+        <div class="enroll-area-title">
+          <h3><br><br>立刻報名<br><small><?php the_title(); ?></small></h3>
+        </div>
+        <?php echo do_shortcode('[contact-form-7 id="75" title="form-course-enrollment" html_class="form-course-enrollment"]'); ?>
+      </div>
+
+    <?php } elseif ($term_list[0] == "pending") {?>
+
+      <div class="enroll-area-frame">
+        <div class="enroll-area-title">
+          <h3><br><br>登記候補名額<br><small><?php the_title(); ?></small></h3>
+        </div>
+        <?php echo do_shortcode('[contact-form-7 id="428" title="form-course-pending" html_class="form-course-enrollment"]'); ?>
+      </div>
+
+    <?php } ?>
+
 	</div>
 
 	<hr>

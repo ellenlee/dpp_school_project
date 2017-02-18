@@ -327,6 +327,11 @@ section#course-entry-section #course-video {
   font-weight: 800;
 }
 
+.btn-closed {
+  border: 1px solid #ccc !important;
+  background-color: #eee;
+}
+
 .price-big {
   display: none !important;
 }
