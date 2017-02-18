@@ -62,7 +62,16 @@
 
 <?php wp_head(); ?>
 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-92101085-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </head>
 
 <body <?php body_class(); ?>>
@@ -240,7 +249,12 @@
 									<div class="course-price price-big">
 										<h2><small>報名費</small>$<?php echo $course_price; ?></h2>
 										<p class="small">* 黨員全程參與可退報名費</p>
-										<a href="#enroll-area" class="btn btn-warning btn-lg">立刻報名</a>
+
+                    <?php if() { ?>
+
+  										<a href="#enroll-area" class="btn btn-warning btn-lg">立刻報名</a>
+
+                    <?php } ?>
 										<br>
 										<!-- FB share button -->
 										<div class="fb-like"
