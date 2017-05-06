@@ -16,16 +16,28 @@ get_header(); ?>
 	<div id="primary-home" class="content-area col-md-12">
 		<main id="main" class="site-main row container" role="main">
 			<h1 class="page-title cat-page-title">
-						<?php
-							if ( is_category() ) :
-								single_cat_title();
-								endif;
-								?>
+					<?php
+						if ( is_category( ) ) :
+							single_cat_title();
+							endif;
+							?>
 			</h1>
-			<?php if ( have_posts() ) : ?>
+
+			<?php
+		  	// The Query
+				$course_category = array(
+					'post_type' => array('grass_unit', 'grass_course'),
+					'title' => $value,
+					'posts_count' => '1',
+				);
+
+				$the_query = new WP_Query( $course_category );
+			?>
+
+			<?php if ( $the_query->have_posts() ) : ?>
 
 				<?php /* Start the Loop */ $ink_count = 0; $ink_row_count=0 ?>
-				<?php while ( have_posts() ) : the_post();
+				<?php while ( $the_query->have_posts() ) : $the_query->the_post();
 					if ($ink_count == 0 ) {echo "<div class='row-".$ink_row_count." row'>";}
 				?>
 
