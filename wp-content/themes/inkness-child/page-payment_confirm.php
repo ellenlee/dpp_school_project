@@ -14,6 +14,7 @@ get_header(); ?>
 
 						<?php
 							$course_id = $_GET['course-id'];
+							$your_name = $_GET['yourname'];
 							if ($course_id):
 
 								$course_param = array(
@@ -29,6 +30,7 @@ get_header(); ?>
 										while( $the_course->have_posts() ) :
 											($the_course->the_post());
 						?>
+												<h4 class="entry-title"><?php echo $your_name ?>：</h4>
 												<h4 class="entry-title">感謝您報名「<?php the_title(); ?>」</h4>
 						<?php
 										endwhile; else:
