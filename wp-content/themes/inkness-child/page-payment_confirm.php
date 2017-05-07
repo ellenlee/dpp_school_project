@@ -18,7 +18,7 @@ get_header(); ?>
 							if ($course_id):
 
 								$course_param = array(
-									'post_type' => 'grass_course',
+									'post_type' => array('grass_course', 'grass_unit'),
 									'meta_key' => 'course_id',
 									'meta_value' => $course_id,
 									'posts_count' => '1',
