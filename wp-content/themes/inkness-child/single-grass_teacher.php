@@ -44,7 +44,7 @@ get_header(); ?>
 							// The Query
 
 							$grass_teacher_param = array(
-								'post_type' => 'grass_course',
+								'post_type' => array('grass_course', 'grass_unit'),
 								'course_teacher' => get_the_title(),
 								'posts_count' => '1',
 							);
