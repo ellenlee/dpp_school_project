@@ -20,10 +20,21 @@ get_header(); ?>
 					<h1>近期課程</h1>
 					<a href="grass_course/" class="btn btn-default btn-xs">more</a>
 				</div>
-					<?php if ( have_posts() ) : ?>
+					<?php
+				  	// The Query
+						$course_category = array(
+							'post_type' => array('grass_unit', 'grass_course'),
+							'title' => $value,
+							'posts_count' => '1',
+						);
+
+						$the_query = new WP_Query( $course_category );
+
+						if ( $the_query->have_posts() ) :
+					?>
 
 					<?php /* Start the Loop */ $ink_count = 0; $ink_row_count=0; $i = 1; ?>
-					<?php while ( have_posts() && $i <= 3 ) : the_post();
+					<?php while ( $the_query->have_posts() && $i <= 3 ) : $the_query->the_post();
 						if ($ink_count == 0 ) {echo "<div class='row-".$ink_row_count." row'>";}
 					?>
 
