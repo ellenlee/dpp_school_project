@@ -8,32 +8,31 @@
 ?>
 
 <!-- 宣告課程相關變數 -->
-			<?php
-        // course status
-        $term_list = wp_get_post_terms($post->ID, 'course_status', array("fields" => "slugs"));
+<?php
+  // course status
+  $term_list = wp_get_post_terms($post->ID, 'course_status', array("fields" => "slugs"));
 
-				//video and slider
-				$video_embed_link = get_post_custom_values( 'video_embed_link' )[0];
-				$slider_id = get_post_custom_values( 'slider_id' )[0];
+	//video and slider
+	$video_embed_link = get_post_custom_values( 'video_embed_link' )[0];
+	$slider_id = get_post_custom_values( 'slider_id' )[0];
 
-				// 課程
-				$course_copy = get_the_content();
-				$course_goal_list = explode( ",", get_post_custom_values( 'course_goal' )[0] );
-				$course_target = get_post_custom_values( 'course_target' )[0];
-				$course_prepare = get_post_custom_values( 'course_prepare' )[0];
-				$course_arrangment = get_post_custom_values( 'course_arrangment' )[0];
-				$course_place = get_post_custom_values( 'course_place' )[0];
-				$admission_period = get_post_custom_values( 'admission_period' )[0];
+	// 課程
+	$course_copy = get_the_content();
+	$course_goal_list = explode( ",", get_post_custom_values( 'course_goal' )[0] );
+	$course_target = get_post_custom_values( 'course_target' )[0];
+	$course_prepare = get_post_custom_values( 'course_prepare' )[0];
+	$course_arrangment = get_post_custom_values( 'course_arrangment' )[0];
+	$course_place = get_post_custom_values( 'course_place' )[0];
+	$admission_period = get_post_custom_values( 'admission_period' )[0];
 
-				// 課表與內容
-        $course_unit = get_post_custom_values( 'course_unit' );
-        $class_info = get_post_custom_values( 'class_info' );
-				$class_num = count( $class_info );
+	// 課表與內容
+  $course_unit = get_post_custom_values( 'course_unit' );
+  $class_info = get_post_custom_values( 'class_info' );
+	$class_num = count( $class_info );
 
-				// price
-				$course_price = get_post_custom_values( 'course_price' )[0];
-
-			?>
+	// price
+	$course_price = get_post_custom_values( 'course_price' )[0];
+?>
 
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -69,11 +68,14 @@
 
   <script type="text/javascript">// <![CDATA[
 
-    // 使用者選擇要報名課堂時，報名表單的空欄會自動顯示
     window.onload = init;
 
     function init() {
-      console.log("Hello World!");
+      reset_enroll_id();
+
+      var button = document.getElementById('enroll_form_sumbit');
+      button.onclick = reset_enroll_id;
+
       var unitSelector = document.getElementById('unit_list');
       unitSelector.onchange = get_unit_name;
     }
@@ -83,6 +85,26 @@
       var selected_unit = document.getElementById('unit_list').value
       console.log(selected_unit);
       unitBox.value = selected_unit;
+    }
+
+    function reset_enroll_id(){
+      var enrollId = generate_random();
+      console.log(enrollId);
+      var enrollBox = document.getElementById('enroll_id');
+      enrollBox.value = enrollId;
+    }
+
+    function generate_random(){
+      var randoma = "";
+      var random = 10;
+      for( i = 1; i <= 10; i++){
+        var c = parseInt(3*Math.random())+1;
+        if( c == 1 ){ var a = Math.random().toString(36)[5]; }
+        if( c == 2 ){ var a = Math.random().toString(36)[5].toUpperCase(); }
+        if( c == 3 ){ var a = Math.floor((Math.random() * 10) + 1).toString(); }
+        randoma = randoma+a;
+      }
+      return randoma;
     }
 
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -399,23 +421,7 @@
 				</div>
 
 
-<?php
 
-  $random = 10;
-  for ( $i = 1; $i <= $random; $i = $i + 1 ){
-    $c = rand(1,3);
-    if( $c == 1 ){ $a = rand(97, 122); $b = chr($a); }
-    if( $c == 2 ){ $a = rand(65, 90); $b = chr($a); }
-    if( $c == 3 ){ $b = rand(0,9); }
-
-    $randoma = $randoma.$b;
-  }
-
-  if ( ! add_post_meta($post->ID, 'enroll-id', $randoma, true) ) {
-    update_post_meta( $post->ID, 'enroll-id', $randoma );
-  }
-
-?>
   <!-- 報名表單 -->
 
   <div id="enroll-area" class="flex-center">
