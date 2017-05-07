@@ -67,7 +67,24 @@
 
 <?php wp_head(); ?>
 
-<script>
+  <script type="text/javascript">// <![CDATA[
+
+    // 使用者選擇要報名課堂時，報名表單的空欄會自動顯示
+    window.onload = init;
+
+    function init() {
+      console.log("Hello World!");
+      var unitSelector = document.getElementById('unit_list');
+      unitSelector.onchange = get_unit_name;
+    }
+
+    function get_unit_name(){
+      var unitBox = document.getElementById('grass_unit');
+      var selected_unit = document.getElementById('unit_list').value
+      console.log(selected_unit);
+      unitBox.value = selected_unit;
+    }
+
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -76,7 +93,8 @@
   ga('create', 'UA-92101085-1', 'auto');
   ga('send', 'pageview');
 
-</script>
+  // ]]></script>
+
 </head>
 
 <body <?php body_class(); ?>>
@@ -184,7 +202,6 @@
 					?>
 
 					<!-- 自訂課程內容開始 -->
-          <?php the_meta(); ?>
           <div id="course-main-content">
             <div id="course-entry-content">
 							<div id="course-entry-content-left">
@@ -193,7 +210,7 @@
 								</div>
 								<?php if( $course_price ){ ?>
 									<div class="course-price price-big">
-										<h2><small>報名費</small>$<?php echo $course_price; ?></h2>
+										<h2><small>單場報名費</small>$<?php echo $course_price; ?></h2>
 										<p class="small">* 黨員全程參與可退報名費</p>
                       <?php if ( $term_list[0] == "active" ) { ?>
 
@@ -285,7 +302,7 @@
 
 										if( $course_price ){ ?>
 											<div class='course-price price-xs'>
-												<h2><small>報名費</small>$<?php echo $course_price; ?></h2>
+												<h2><small>單場報名費</small>$<?php echo $course_price; ?></h2>
 												<p class="small">* 黨員全程參與可退報名費</p>
 												<a href="#enroll-area" class="btn btn-warning btn-sm">立刻報名</a>
 												<!-- FB share button -->
@@ -399,8 +416,9 @@
   }
 
 ?>
+  <!-- 報名表單 -->
 
-	<div id="enroll-area" class="flex-center">
+  <div id="enroll-area" class="flex-center">
 
     <?php if ( $term_list[0] == "active" ) { ?>
 
@@ -409,11 +427,13 @@
           <h3>
             <br><br>立刻報名<br>
             <small><?php the_title(); ?></small><br>
-            <select name="unit_select" id="unit-name" class="wpcf7-form-control wpcf7-select" aria-invalid="false" style="font-size: 14px">
-              <option value="6/3(六) 1900-2100 謝金魚">6/3(六) 1900-2100 謝金魚</option>
-              <option value="6/10(六) 1900-2100 野蠻小邦周">6/10(六) 1900-2100 野蠻小邦周</option>
-              <option value="6/17(六) 1900-2100 神奇海獅 ">6/17(六) 1900-2100 神奇海獅 </option>
-              <option value="6/24(六) 1900-2100 馬雅人">6/24(六) 1900-2100 馬雅人</option>
+
+            <select name="unit_select" id="unit_list" class="wpcf7-form-control wpcf7-select" aria-invalid="false" style="font-size: 14px">
+              <option value="">請選擇要報名的場次</option>
+              <?php
+                foreach( $course_unit as $key => $value ) { ?>
+                  <option value="<?php echo $value; ?>"><?php echo $value; ?></option>
+              <?php } ?>
             </select>
           </h3>
         </div>
@@ -431,6 +451,7 @@
     <?php } ?>
 
 	</div>
+
 
 	<hr>
 	<footer class="entry-meta">

@@ -458,13 +458,17 @@
 
 ?>
 
+  <!-- 報名表單 -->
 	<div id="enroll-area" class="flex-center">
 
     <?php if ( $term_list[0] == "active" ) { ?>
 
       <div class="enroll-area-frame">
         <div class="enroll-area-title">
-          <h3><br><br>立刻報名<br><small><?php the_title(); ?></small></h3>
+          <h3>
+            <br><br>立刻報名<br>
+            <small><?php the_title(); ?></small><br>
+          </h3>
         </div>
         <?php echo do_shortcode('[contact-form-7 id="75" title="form-course-enrollment" html_class="form-course-enrollment"]'); ?>
       </div>
