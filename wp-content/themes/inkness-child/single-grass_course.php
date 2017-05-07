@@ -439,25 +439,6 @@
 					</div><!-- 課程資訊結束 -->
 				</div>
 
-
-<?php
-
-  $random = 10;
-  for ( $i = 1; $i <= $random; $i = $i + 1 ){
-    $c = rand(1,3);
-    if( $c == 1 ){ $a = rand(97, 122); $b = chr($a); }
-    if( $c == 2 ){ $a = rand(65, 90); $b = chr($a); }
-    if( $c == 3 ){ $b = rand(0,9); }
-
-    $randoma = $randoma.$b;
-  }
-
-  if ( ! add_post_meta($post->ID, 'enroll-id', $randoma, true) ) {
-    update_post_meta( $post->ID, 'enroll-id', $randoma );
-  }
-
-?>
-
   <!-- 報名表單 -->
 	<div id="enroll-area" class="flex-center">
 

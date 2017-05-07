@@ -105,6 +105,8 @@ function inkness_scripts() {
 	wp_enqueue_style( 'inkness-fonts', '//fonts.googleapis.com/css?family=Open+Sans:300,400,700,600' );
   wp_enqueue_style( 'inkness-basic-child-style', get_stylesheet_directory_uri() . '/style.css');
 
+  wp_enqueue_script( 'application_js', get_stylesheet_directory_uri() . '/application.js' );
+
 	// wp_enqueue_style( 'inkness-basic-style', get_stylesheet_directory_uri()."/style.css" );
 	if ( (function_exists( 'of_get_option' )) && (of_get_option('sidebar-layout', true) != 1) ) {
 		if (of_get_option('sidebar-layout', true) ==  'right') {
