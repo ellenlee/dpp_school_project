@@ -69,6 +69,35 @@
 
   <script type="text/javascript">// <![CDATA[
 
+  function get_unit_name(){
+    var selectedUnit = "";
+
+    var unitItem = document.getElementsByClassName('unit_item');
+    var enrolledUnitList = document.getElementById('grass_unit');
+    var priceInput = document.getElementById('unit-price');
+    var price = 0;
+    var count = 0;
+    enrolledUnitList.value = null;
+
+    for( i = 0; i <= unitItem.length-1; i++){
+      if(unitItem[i].checked == true){
+        selectedUnit = selectedUnit + unitItem[i].value;
+        selectedUnit = selectedUnit + ", ";
+        count = count + 1;
+      }
+    }
+    console.log(selectedUnit);
+    console.log(count);
+    console.log(price);
+
+    enrolledUnitList.value = selectedUnit;
+    price = count * <?php echo $course_price; ?>;
+    priceInput.focus();
+    priceInput.value = price;
+    selectedUnit = "";
+  }
+
+
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -395,14 +424,12 @@
           <h3>
             <br><br>立刻報名<br>
             <small><?php the_title(); ?></small><br>
-
-            <select name="unit_select" id="unit_list" class="wpcf7-form-control wpcf7-select" aria-invalid="false" style="font-size: 14px">
-              <option value="">請選擇要報名的場次</option>
+            <form action="/" id="unit_list">
               <?php
                 foreach( $course_unit as $key => $value ) { ?>
-                  <option value="<?php echo $value; ?>"><?php echo $value; ?></option>
+                  <input type="checkbox" class="unit_item" value="<?php echo $value; ?>"><?php echo $value; ?><br>
               <?php } ?>
-            </select>
+            </form>
           </h3>
         </div>
         <?php echo do_shortcode('[contact-form-7 id="536" title="form-unit-enrollment" html_class="form-course-enrollment"]'); ?>

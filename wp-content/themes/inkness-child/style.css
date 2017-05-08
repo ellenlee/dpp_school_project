@@ -704,7 +704,7 @@ form.form-payment-confirm input.form-course-id {
 
   #enroll-area h3 {
     width: 60%;
-    text-align: right;
+    /*text-align: right;*/
     margin: 0 20px 0 0;
     border-right: 3px solid #c2e1e7;
     padding-right: 10px;
@@ -766,6 +766,22 @@ form.form-payment-confirm input.form-course-id {
     width: 424px;
   }
 }
+
+/* Unit list */
+form#unit_list {
+  font-size: 14px;
+  margin-top: 20px;
+  text-align: left;
+  font-weight: 400;
+  color: #666;
+}
+
+form#unit_list input {
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+
+
 
 /* 關於我們 - page */
 

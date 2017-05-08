@@ -6,15 +6,8 @@ function init() {
   var button = document.getElementById('enroll_form_sumbit');
   button.onclick = reset_enroll_id;
 
-  var unitSelector = document.getElementById('unit_list');
-  unitSelector.onchange = get_unit_name;
-}
-
-function get_unit_name(){
-  var unitBox = document.getElementById('grass_unit');
-  var selected_unit = document.getElementById('unit_list').value
-  console.log(selected_unit);
-  unitBox.value = selected_unit;
+  var unitForm = document.getElementById('unit_list');
+  unitForm.onclick = get_unit_name;
 }
 
 function reset_enroll_id(){
